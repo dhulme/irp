@@ -6,25 +6,49 @@
 \usepackage[pdftex]{graphicx}
 \usepackage{parskip}
 \usepackage{fancyhdr}
+\usepackage{hyperref}
 
-\title{title}
+\title{Individual Research Project Brief}
 \author{David Hulme}
 \begin{document}
 \pagestyle{fancy}
 \fancyhead{}
 \fancyfoot{}
-\fancyhead[LO,LE]{title}
+\fancyhead[LO,LE]{Individual Research Project}
 \fancyfoot[LO,LE]{\thepage}
 \fancyfoot[RO, RE]{\today}
 
-\fancyhead[RO,RE]{title}
-
 \begin{center}
-\huge{Document Title}\\
+\huge{Project Brief}\\
 [1cm]
 \end{center}
 \hrule
+\begin{tabular}{p{5cm}p{4cm}p{4cm}}
+    
+        \textbf{Student name}         & David Hulme   & \texttt{dh7g10@ecs.soton.ac.uk} \\ 
+        \textbf{Supervisor name}      & Kirk Martinez & \texttt{km@ecs.soton.ac.uk}     \\ 
+        \textbf{Project title} & \multicolumn{2}{p{10cm}}{Is HTML5 video a viable replacement for plug-in based approaches to deliver both pre-recorded and live content to web agents?} \\
 
-\section{Section}
+\end{tabular} \\
+[0.2cm]
+\hrule
+\vspace{0.4cm}
+Video multimedia on an HTML page has typically been embedded through the use of third party plug-ins such as Adobe Flash or Microsoft Silverlight. HTML5, an emerging specification from the W3C, defines, amongst other things, a method for videos to be embedded directly into a web page through the `video' element. The ability to directly embed videos into web pages removes the web browser's dependence on third party software and opens new possibilities for the integration of video multimedia with other web content.
+
+However, for any new web technology to gain acceptance it must be comparable to the current technology in use. This project will research five key areas relating to the delivery of video content to web agents to examine whether HTML5 video is a viable replacement for the current plug-in based technologies in use and what new opportunities it can provide.
+
+The five key areas are:
+\begin{enumerate}
+\item \textbf{Delivery method} \\
+Current solutions allow for the both pre-recorded and live content to be delivered to web agents using a variety of streaming methods. What streaming methods are available for HTML5 video and do they support both pre-recorded and live content?
+\item \textbf{Content protection} \\
+Content providers wish may wish to deter users from saving a copy of the delivered content due to license restrictions. Critical to the uptake of HTML5 video is whether it can provide some measures to aid this such as digital rights management. But is this within the scope of the W3C? Does it contrast with their vision of the Web? 
+\item \textbf{Portability} \\
+Current plug-in based approaches support the viewing of video content across a variety of browsers, platforms and devices using a number of codecs. Can HTML5 match this? What codecs are supported?
+\item \textbf{Performance} \\
+Ensuring that performance is not affected is key to the uptake of HTML5 video. How does it compare to current solutions?
+\item \textbf{Unique features} \\
+Current solutions have features that are not part of the HTML5 specification. Will the lack of these features affect the uptake of HTML5 video? However, HTML5 video also provides new opportunities for developers. What are these features and will they help drive adoption?
+\end{enumerate}
 
 \end{document}
