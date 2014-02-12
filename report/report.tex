@@ -524,6 +524,8 @@ IEEEtran.cls version 1.7 and later.
 % (should never be an issue)
 I wish you the best of success.
 
+Blah blah\cite{website:ciscoForecastAndMethodology}
+
 \section{Content Delivery}
 \subsection{Embedding Method}
 \subsection{Supported Formats}
@@ -682,13 +684,17 @@ The author would like to thank Dr. Kirk Martinez for his support and guidance.
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
-\begin{thebibliography}{1}
 
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+\bibliographystyle{IEEEtran}
+\bibliography{report}
 
-\end{thebibliography}
+%\begin{thebibliography}{1}
+
+%\bibitem{IEEEhowto:kopka}
+%H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+%  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+
+%\end{thebibliography}
 
 % biography section
 % 
