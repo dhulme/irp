@@ -376,7 +376,8 @@
 % \url{my_url_here}.
 
 
-
+% Listings
+\usepackage{listings}
 
 
 % *** Do not adjust lengths that control margins, column widths, etc. ***
@@ -391,6 +392,8 @@
 
 
 \begin{document}
+\lstset{language=HTML}  
+
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
@@ -479,8 +482,7 @@ However, for any new web technology to gain acceptance it must be comparable to 
 \section{Introduction}
 \IEEEPARstart{I}{nternet} video traffic is growing. Cisco predict that by 2017, consumer Internet video traffic will account for 69\% of all consumer internet traffic\cite{website:ciscoForecastAndMethodology}. In addition, nearly half of all internet traffic will originate from a non-PC device\cite{website:ciscoForecastAndMethodology}. It is therefore important to ensure that technologies are in place to deliver this content to users and provide a high quality viewing experience across a wide range of devices and platforms.
 
-A typical way users access video multimedia is through an embedded video on a web page. Typically this has been achieved through the use of third party plug-ins such as Adobe Flash\footnote{Adobe Flash Player: \url{http://www.adobe.com/uk/software/flash/about/}}, henceforth referred to as Flash, or Microsoft Silverlight\footnote{Microsoft Silverlight: \url{http://www.microsoft.com/silverlight/}}, now referred to as Silverlight. Flash was well on the way to becoming the de facto standard for embedding video into web pages, %there was a paper that said this I think....
-however in 2010, Apple announced that they would not allow Flash on their mobile devices, citing the closed nature of Flash, reliability, security and performance concerns\cite{website:appleFlash}. T. Watanabe et al also raised concerns regarding the security of Flash\cite{inproceedings:flashSecurity}. An industry agreed standard addressing these concerns is required.
+A typical way users access video multimedia is through an embedded video on a web page. Typically this has been achieved through the use of third party plug-ins such as Adobe Flash\footnote{Adobe Flash Player: \url{http://www.adobe.com/uk/software/flash/about/}}, henceforth referred to as Flash, or Microsoft Silverlight\footnote{Microsoft Silverlight: \url{http://www.microsoft.com/silverlight/}}, now referred to as Silverlight. Flash was well on the way to becoming the de facto standard for embedding video into web pages\cite{article:HTML5LeadsAWebRevolution}, however in 2010, Apple announced that they would not allow Flash on their mobile devices, citing the closed nature of Flash, reliability, security and performance concerns\cite{website:appleFlash}. T. Watanabe et al also raised concerns regarding the security of Flash\cite{inproceedings:flashSecurity}. An industry agreed standard addressing these concerns is required.
 
 HTML5, an emerging specification from the W3C, includes a \texttt{video} element definition. This element enables videos to be embedded directly into a web page\cite{standard:html5VideoElement}. Natively embedding videos into web pages removes the web browser's dependence on a third party plug-in, increasing openness. %more benefits?
 In addition it opens new possibilities for the integration of video multimedia with other web content.
@@ -502,7 +504,7 @@ Flash only plays videos contained within the FLV (Flash Video) container or the 
 
 HTML5 does not specify support for any specific codec or container format\cite{article:towardsVideoOnTheWebWithHTML5}. The three main codecs and containers currently supported are H.264 in an MP4 container, Theora in an Ogg container and VP8 in a WebM container\cite{article:towardsVideoOnTheWebWithHTML5}.
 
-Table \ref{tab:supportedCodecsAndContainers} shows the support for these three formats across different browsers. Data is sourced from \cite{inproceedings:applicationOfHTML5Multimedia} and \cite{article:towardsVideoOnTheWebWithHTML5}. It is important to note that Table \ref{tab:supportedCodecsAndContainers} only considers that a format is supported if it is supported natively by the browser, for example  Firefox relies on a Flash fallback to play H.264 content\cite{website:firefoxVideoMobileAndTheOpenWeb}.
+Table \ref{tab:supportedCodecsAndContainers} shows the support for these three formats across different browsers. Data is sourced from \cite{inproceedings:applicationOfHTML5Multimedia} and \cite{article:towardsVideoOnTheWebWithHTML5}. It is important to note that Table \ref{tab:supportedCodecsAndContainers} only considers that a format is supported if it is supported natively by the browser, for example  Firefox relies on a Flash fall back to play H.264 content\cite{website:firefoxVideoMobileAndTheOpenWeb}.
 
 \begin{table}
 	\label{tab:supportedCodecsAndContainers}
@@ -519,6 +521,23 @@ Table \ref{tab:supportedCodecsAndContainers} shows the support for these three f
     \end{tabular}
 \end{table}
 
+Table \ref{tab:supportedCodecsAndContainers} illustrates well how there is inconsistent support for different formats across browsers. The problems around these codecs are caused by patents and licensing fees. H.264 is not royalty free and although VP8 and Theora have been released with royalty-free licences, Intellectual Property Rights holders may appear in the future\cite{article:towardsVideoOnTheWebWithHTML5}\cite{website:theoraBenefits}. To ensure that a video is playable across multiple browsers, developers can specify multiple \textless source\textgreater~tags within the \textless video\textgreater~tag that specify different formats of the video that are available. The browser is then able to choose to play the format it most prefers An example of this is shown in Figure \ref{lst:HTML5VideoExample}. If the browser does not support HTML5 video then the \textless object\textgreater~tag, which embeds a flash video, will be rendered instead.
+
+\begin{figure}
+\label{lst:HTML5VideoExample}
+\caption{HTML5 Video Example}
+\begin{lstlisting}[frame=single]
+<video>
+ <source src="video.mp4" type="video/mp4">
+ <source src="video.ogg" type="video/ogg">
+ <source src="video.webm" type="video/webm">
+ <object>
+  <param name="movie" value="movie.flv">
+ </object>
+</video>
+\end{lstlisting}
+\end{figure}
+
 \subsection{Streaming Methods}
 
 \section{Performance}
@@ -527,6 +546,7 @@ Table \ref{tab:supportedCodecsAndContainers} shows the support for these three f
 
 \section{Conclusion}
 The conclusion goes here.
+
 
 
 % An example of a floating figure using the graphicx package.
