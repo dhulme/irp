@@ -485,13 +485,20 @@ however in 2010, Apple announced that they would not allow Flash on their mobile
 HTML5, an emerging specification from the W3C, includes a \texttt{video} element definition. This element enables videos to be embedded directly into a web page\cite{standard:html5VideoElement}. Natively embedding videos into web pages removes the web browser's dependence on a third party plug-in, increasing openness. %more benefits?
 In addition it opens new possibilities for the integration of video multimedia with other web content.
 
-However, any replacement for embedding video content must be suitable and comparable to the current technology in use. This paper will research key areas relating to the delivery of video content to user agents to examine whether HTML5 video is a viable replacement for the current plug-in based technologies in use.
+However, any replacement for embedding video content must be suitable and comparable to the current technology in use. This paper will research key areas relating to the delivery of video content to user agents and the subsequent user interaction with the video to examine whether HTML5 video is a viable replacement for the current plug-in based technologies in use.
 
 \section{Content Delivery}
-
+% is it I?
+First, I will consider how the content is delivered to clients?
 \subsection{Embedding Method}
-\subsection{Supported Formats}
+HTML5 specifies the \textless object \textgreater tag which allows for external resources to be embedded in a web page that be processed by a plug-in\cite{standard:html5}. As F. Daoust et al noted, ``relying on third-party plug-ins to render the video works fine in a variety of use cases''\cite{article:towardsVideoOnTheWebWithHTML5}. However, they also noted that because the video is rendered in a black box, from the browser's perspective, CSS and SVG cannot be used to style the video or apply visual effects\cite{article:towardsVideoOnTheWebWithHTML5}. The \textless video \textgreater tag directly integrates the video into the browser, alleviating these problems.
+
+% some more examples here would be good.
+P. Oehme et al used the native integration of HTML5 video to add dynamic overlays to a video containing related data from various internet sources\cite{inproceedings:theChroomaApproach}. 
+
+
 \subsection{Streaming Methods}
+\subsection{Supported Formats}
 
 \section{Performance}
 
