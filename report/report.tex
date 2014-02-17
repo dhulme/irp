@@ -479,7 +479,7 @@ However, for any new web technology to gain acceptance it must be comparable to 
 \section{Introduction}
 \IEEEPARstart{I}{nternet} video traffic is growing. Cisco predict that by 2017, consumer Internet video traffic will account for 69\% of all consumer internet traffic\cite{website:ciscoForecastAndMethodology}. In addition, nearly half of all internet traffic will originate from a non-PC device\cite{website:ciscoForecastAndMethodology}. It is therefore important to ensure that technologies are in place to deliver this content to users and provide a high quality viewing experience across a wide range of devices and platforms.
 
-A typical way users access video multimedia is through an embedded video on a web page. Typically this has been achieved through the use of third party plug-ins such as Adobe Flash\footnote{Adobe Flash Player: \url{http://www.adobe.com/uk/software/flash/about/}} or Microsoft Silverlight\footnote{Microsoft Silverlight: \url{http://www.microsoft.com/silverlight/}}. Adobe Flash player was well on the way to becoming the de facto standard for embedding video into web pages, %there was a paper that said this I think....
+A typical way users access video multimedia is through an embedded video on a web page. Typically this has been achieved through the use of third party plug-ins such as Adobe Flash\footnote{Adobe Flash Player: \url{http://www.adobe.com/uk/software/flash/about/}}, henceforth referred to as Flash, or Microsoft Silverlight\footnote{Microsoft Silverlight: \url{http://www.microsoft.com/silverlight/}}, now referred to as Silverlight. Flash was well on the way to becoming the de facto standard for embedding video into web pages, %there was a paper that said this I think....
 however in 2010, Apple announced that they would not allow Flash on their mobile devices, citing the closed nature of Flash, reliability, security and performance concerns\cite{website:appleFlash}. T. Watanabe et al also raised concerns regarding the security of Flash\cite{inproceedings:flashSecurity}. An industry agreed standard addressing these concerns is required.
 
 HTML5, an emerging specification from the W3C, includes a \texttt{video} element definition. This element enables videos to be embedded directly into a web page\cite{standard:html5VideoElement}. Natively embedding videos into web pages removes the web browser's dependence on a third party plug-in, increasing openness. %more benefits?
@@ -493,12 +493,33 @@ First, I will consider how the content is delivered to clients?
 \subsection{Embedding Method}
 HTML5 specifies the \textless object \textgreater tag which allows for external resources to be embedded in a web page that be processed by a plug-in\cite{standard:html5}. As F. Daoust et al noted, ``relying on third-party plug-ins to render the video works fine in a variety of use cases''\cite{article:towardsVideoOnTheWebWithHTML5}. However, they also noted that because the video is rendered in a black box, from the browser's perspective, CSS and SVG cannot be used to style the video or apply visual effects\cite{article:towardsVideoOnTheWebWithHTML5}. The \textless video \textgreater tag directly integrates the video into the browser, alleviating these problems.
 
-% some more examples here would be good.
-P. Oehme et al used the native integration of HTML5 video to add dynamic overlays to a video containing related data from various internet sources\cite{inproceedings:theChroomaApproach}. 
+The native embedding of video in the browser allows for improved interaction between the video and other elements in the page. Oehme et al used this native integration to add dynamic overlays to a video containing related data from various internet sources\cite{inproceedings:theChroomaApproach}. Other applications are possible with HTML5 \textless canvas \textgreater tag, that ``provides scripts with a resolution-dependent bitmap canvas'' that visual images can be rendered to\cite{standard:HTML5}. Fulton, S. and Fulton, J. describe how a canvas video puzzle application can be created by using created using this interaction\cite{book:html5canvas}.
 
+\subsection{Supported Formats}
+An important distinction to first make is the difference between a video container and a codec. A codec is the format in which the audio or video is encoded. Some example video codecs include H.264, Theora, VP6 and VP8. A container describes the structure of the file and what codecs are in use\cite{website:videoFormatsGuide}. Some example containers include MP4, WebM, Ogg, AVI and FLV.
+
+Flash only plays videos contained within the FLV (Flash Video) container or the ShockWave Flash format used in earlier releases\cite{article:flashPlayer}. Flash supports the VP6 and Spark codecs\cite{article:flashPlayer} and since version 9 supports H.264\cite{website:flashSupportedFormats}. Silverlight supports the ASF, MP4 and 3GP containers and supports a variety of codecs including H.264 and WMV\cite{website:silverlightSupportedFormats}.
+
+HTML5 does not specify support for any specific codec or container format\cite{article:towardsVideoOnTheWebWithHTML5}. The three main codecs and containers currently supported are H.264 in an MP4 container, Theora in an Ogg container and VP8 in a WebM container\cite{article:towardsVideoOnTheWebWithHTML5}.
+
+Table \ref{tab:supportedCodecsAndContainers} shows the support for these three formats across different browsers. Data is sourced from \cite{inproceedings:applicationOfHTML5Multimedia} and \cite{article:towardsVideoOnTheWebWithHTML5}. It is important to note that Table \ref{tab:supportedCodecsAndContainers} only considers that a format is supported if it is supported natively by the browser, for example  Firefox relies on a Flash fallback to play H.264 content\cite{website:firefoxVideoMobileAndTheOpenWeb}.
+
+\begin{table}
+	\label{tab:supportedCodecsAndContainers}
+	\caption{Supported Codecs and Containers by Browser}
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    \textbf{Browser}    & \textbf{H.264 in MP4} & \textbf{Theora in Ogg} & \textbf{VP8 in WebM} \\ \hline
+    IE8        & No           & No            & No          \\ \hline
+    IE9+       & Yes          & No            & No          \\ \hline
+    Chrome 18+ & Yes          & Yes           & Yes         \\ \hline
+    Firefox 6+ & No           & Yes           & Yes         \\ \hline
+    Opera 12+  & No           & Yes           & Yes         \\ \hline
+    Safari 5+  & Yes          & No            & No          \\ \hline
+    \end{tabular}
+\end{table}
 
 \subsection{Streaming Methods}
-\subsection{Supported Formats}
 
 \section{Performance}
 
