@@ -495,7 +495,7 @@ First, I will consider how the content is delivered to clients?
 \subsection{Embedding Method}
 HTML5 specifies the \textless object \textgreater tag which allows for external resources to be embedded in a web page that be processed by a plug-in\cite{standard:html5}. As F. Daoust et al noted, ``relying on third-party plug-ins to render the video works fine in a variety of use cases''\cite{article:towardsVideoOnTheWebWithHTML5}. However, they also noted that because the video is rendered in a black box, from the browser's perspective, CSS and SVG cannot be used to style the video or apply visual effects\cite{article:towardsVideoOnTheWebWithHTML5}. The \textless video \textgreater tag directly integrates the video into the browser, alleviating these problems.
 
-The native embedding of video in the browser allows for improved interaction between the video and other elements in the page. Oehme et al used this native integration to add dynamic overlays to a video containing related data from various internet sources\cite{inproceedings:theChroomaApproach}. Other applications are possible with HTML5 \textless canvas \textgreater tag, that ``provides scripts with a resolution-dependent bitmap canvas'' that visual images can be rendered to\cite{standard:HTML5}. Fulton, S. and Fulton, J. describe how a canvas video puzzle application can be created by using created using this interaction\cite{book:html5canvas}.
+The native embedding of video in the browser allows for improved interaction between the video and other elements in the page. Oehme et al used this native integration to add dynamic overlays to a video containing related data from various internet sources\cite{inproceedings:theChroomaApproach}. Other applications are possible with HTML5 \textless canvas \textgreater tag, that ``provides scripts with a resolution-dependent bitmap canvas'' that visual images can be rendered to\cite{standard:HTML5}. Fulton, S. and Fulton, J. describe how a canvas video puzzle application can be created by using created using this interaction\cite{book:html5canvas}. Quax et al used a hidden video element to receive a video stream from the server. They then manipulated the video before displaying it on a canvas element\cite{inproceedings:aPracticalAndScableMethodForStreaming}.
 
 \subsection{Supported Formats}
 An important distinction to first make is the difference between a video container and a codec. A codec is the format in which the audio or video is encoded. Some example video codecs include H.264, Theora, VP6 and VP8. A container describes the structure of the file and what codecs are in use\cite{website:videoFormatsGuide}. Some example containers include MP4, WebM, Ogg, AVI and FLV.
@@ -538,7 +538,10 @@ Table \ref{tab:supportedCodecsAndContainers} illustrates well how there is incon
 \end{lstlisting}
 \end{figure}
 
-\subsection{Streaming Methods}
+\subsection{Delivery Methods}
+% I think these links should probs be footnotes
+There are two distinct approaches for delivering video content to clients. The first is traditional streaming through protocols such as Real Time Streaming Protocol (RTSP)\cite{misc:rfcRSTP} with Real-time Transport Protocol (RTP)\cite{misc:rfcRTP} or Adobe's Real Time Message Protocol (RTMP)\cite{website:RTMP}\cite{article:areWeInTheMiddleOfAVideoStreamingRevolution}. The second is streaming over the HTTP protocol, either through progressive download or adaptive HTTP streaming technologies such as Apple's HTTP Live Streaming (HLS)\cite{misc:HTTPLiveStreaming}, Adobe's Dynamic HTTP Streaming\cite{website:HTTPDynamicStreaming} or Microsoft's Smooth Streaming\cite{website:smoothStreaming}\cite{inproceedings:aSeamlessIntegrationOfAdaptiveHTTPStreaming}.
+
 
 \section{Performance}
 
