@@ -552,18 +552,22 @@ Consequently video streaming in HTML5 must be done over HTTP.
 \section{Performance}
 Globally, mobile data traffic will increase 13-fold between 2012 and 2017\cite{website:ciscoForecastAndMethodology}. This will lead to an increasing amount of internet video being consumed on mobile devices. Such devices will be less powerful than the typical desktop computer and will have an emphasis on optimising their battery life. It is important that watching an HTML5 video is not a large train on resources. % could probably say this better.
 
-Ilias et al. conducted a study to analyse the video streaming performance between Flash video and HTML5 video\cite{inproceedings:aStudyOfVideoPerformanceAnalysis}. They looked at two video performance metrics, frame rate and CPU usage, whilst streaming a video over wired and wireless networks across a variety of browsers. Their study showed that the implementation of HTML5 video in each browser had a big effect on the performance. 
+Ilias et al. conducted a study to analyse the video streaming performance between Flash video and HTML5 video\cite{inproceedings:aStudyOfVideoPerformanceAnalysis}. They looked at two video performance metrics, frame rate and CPU usage, whilst streaming a video over wired and wireless networks across a variety of browsers. Their study showed that the implementation of HTML5 video in each browser had a big effect on the performance. This can be seen in Figure \ref{fig:cpuPerformanceGraph}. Overall the average CPU for Flash was 77\%, and 87\% for HTML5 video. This shows that on average, HTML5 video requires an 13\% more CPU power than Flash. In addition, in IE9 HTML5 video used 95\% of the CPU. This certainly has the potential to cause playback problems on mobile devices and cause frustration to users. However, the HTML5 video Chrome result suggests that the CPU usage is heavily influenced by the HTML5 video implementation. Thus over time, the situation should improve.
+
+% could look at native decoder chips, hardware vs software decoding
+% maybe there also some additional studies on latency etc. 
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=2.5in]{cpu-performance-graph}
-\caption{CPU usage across different browsers. Data produced by averaging results across two different CPU monitoring tools and both wired and wireless networks.}
+\includegraphics[width=3.5in]{cpu-performance-graph}
+\caption{CPU usage across different browsers. Data produced by averaging results from Ilias et al.\cite{inproceedings:aStudyOfVideoPerformanceAnalysis} across two different CPU monitoring tools and both wired and wireless networks.}
 \label{fig:cpuPerformanceGraph}
-\end{figure}
-
-
+\end{figure} 
 
 \section{Accessibility}
+One of the key problems with plug-in based approaches such as Flash or Silverlight is that any video playback controls are generally inaccessible to screen readers who read web pages based on HTML tags\cite{inproceedings:transformingFlashToXML}\cite{incollection:accessibilityEvaluationForMultimediaContent}. Plug-in content is delivered in a binary format and determining the structure of the content at runtime is near impossible\cite{inproceedings:transformingFlashToXML}.
+
+blah blah blah
 
 \section{Conclusion}
 The conclusion goes here.
