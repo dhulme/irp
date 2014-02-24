@@ -126,12 +126,12 @@
 % *** GRAPHICS RELATED PACKAGES ***
 %
 \ifCLASSINFOpdf
-  % \usepackage[pdftex]{graphicx}
+  \usepackage[pdftex]{graphicx}
   % declare the path(s) where your graphic files are
-  % \graphicspath{{../pdf/}{../jpeg/}}
+  % graphicspath{{../pdf/}{../jpeg/}}
   % and their extensions so you won't have to specify these with
   % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+  \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
 \else
   % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
   % will default to the driver specified in the system graphics.cfg if no
@@ -546,7 +546,22 @@ The second are pulled-based approaches usually over the HTTP protocol. The simpl
 
 HTML5 video does not declare if implementations should support streaming through protocols other than HTTP, currently most browsers do not. %citation?
 Consequently video streaming in HTML5 must be done over HTTP.
+
+% there was lots other stuff to talk about here... will come back to it.
+
 \section{Performance}
+Globally, mobile data traffic will increase 13-fold between 2012 and 2017\cite{website:ciscoForecastAndMethodology}. This will lead to an increasing amount of internet video being consumed on mobile devices. Such devices will be less powerful than the typical desktop computer and will have an emphasis on optimising their battery life. It is important that watching an HTML5 video is not a large train on resources. % could probably say this better.
+
+Ilias et al. conducted a study to analyse the video streaming performance between Flash video and HTML5 video\cite{inproceedings:aStudyOfVideoPerformanceAnalysis}. They looked at two video performance metrics, frame rate and CPU usage, whilst streaming a video over wired and wireless networks across a variety of browsers. Their study showed that the implementation of HTML5 video in each browser had a big effect on the performance. 
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{cpu-performance-graph}
+\caption{CPU usage across different browsers. Data produced by averaging results across two different CPU monitoring tools and both wired and wireless networks.}
+\label{fig:cpuPerformanceGraph}
+\end{figure}
+
+
 
 \section{Accessibility}
 
