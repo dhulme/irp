@@ -587,9 +587,11 @@ WCAG 2.0 Guideline 1.2 requires that developers provide alternatives for time-ba
     \end{tabular}
 \end{table}
 
-The W3C provides documents detailing how these guidelines can be met for different technologies such as Flash and Silverlight \footnote{Flash Techniques for WCAG 2.0: \url{http://www.w3.org/TR/WCAG20-TECHS/flash.html\#FLASH11}} \footnote{Silverlight Techniques for WCAG 2.0: \url{http://www.w3.org/TR/WCAG20-TECHS/silverlight.html}}. For example the Flash document explains how developers can add subtitles to their Flash videos using an XML file to meet WCAG 2.0 Guideline 1.2.2 \cite{website:flashTechniquesForWCAG}.
+The W3C provides documents detailing how these guidelines can be met for different technologies such as Flash and Silverlight \footnote{Flash Techniques for WCAG 2.0: \url{http://www.w3.org/TR/WCAG20-TECHS/flash.html}} \footnote{Silverlight Techniques for WCAG 2.0: \url{http://www.w3.org/TR/WCAG20-TECHS/silverlight.html}}. For example the Flash document explains how developers can add subtitles to their Flash videos using an XML file to meet WCAG 2.0 Guideline 1.2.2 \cite{website:flashTechniquesForWCAG}.
 
 Pfeiffer and Parker describe existing implementations for supporting subtitles for HTML5 video \cite{inproceedings:accessibilityForTheHTML5VideoElement}. They describe the work of Jan Gerber who uses JavaScript to load subtitles from a text file and display them on screen in time with an HTML5 video\footnote{Jan Gerber, jquery.srt.js: \url{http://v2v.cc/~j/jquery.srt/}} \cite{inproceedings:accessibilityForTheHTML5VideoElement}. HTML5 specifies a \textless track\textgreater tag that can be used to specify timed text tracks for media elements, see Figure \ref{lst:trackExample} \cite{standard:html5}. Currently implementations vary by browser and cross-browser native support the track element is some way off. %citation?
+
+% could mention using webvtt format?
 
 \begin{figure}
 \label{lst:trackExample}
@@ -597,22 +599,26 @@ Pfeiffer and Parker describe existing implementations for supporting subtitles f
 \begin{lstlisting}[frame=single]
 <video>
   <source src="video.webm">
-  <track src="subtitles.vtt" label="English subtitles" kind="subtitles" srclang="en"></track>
+  <track src="subtitles.vtt"
+    label="English subtitles"
+     kind="subtitles" srclang="en">
+  </track>
 </video>
 \end{lstlisting}
 \end{figure}
 
 % could also talk about embedding in file....
 %Instead of accessibility data can be stored within container formats such as Ogg %\cite{inproceedings:accessibilityForTheHTML5VideoElement}. 
+% http://git.xiph.org/?p=ffmpeg2theora.git;a=blob_plain;f=subtitles.txt;hb=HEAD
 
+\subsection{Accessible Web Page}
 % web page 
 % how embedded in web page
 
+\subsection{Accessible User Interaction}
 % user interaction
 % interaction with user - clicking buttons etc
-
-
-One of the key problems with plug-in based approaches such as Flash or Silverlight is that any video playback controls are generally inaccessible to screen readers who read web pages based on HTML tags \cite{inproceedings:transformingFlashToXML} \cite{incollection:accessibilityEvaluationForMultimediaContent}. Plug-in content is delivered in a binary format and determining the structure of the content at runtime is near impossible \cite{inproceedings:transformingFlashToXML}.
+WCAG 2.0 Guideline 2.2.2 states that for any moving content, there must exist some mechanism to pause the content. Mostly all video embedding solutions provide this. Guideline 2.1.1 states that all content must be operable through the keyboard \cite{standard:wcag2}. One of the key problems with plug-in based approaches such as Flash or Silverlight is that any video playback controls are generally inaccessible to screen readers who read web pages based on HTML tags \cite{inproceedings:transformingFlashToXML} \cite{incollection:accessibilityEvaluationForMultimediaContent}. Plug-in content is delivered in a binary format and determining the structure of the content at runtime is near impossible \cite{inproceedings:transformingFlashToXML}.
 
 Adobe has provided a document, ``Best Practices for Accessible Flash Design'' which describes how Flash content can be understood by screen readers through Microsoft Active Accessibility\footnote{Microsoft Active Accessibility: \url{http://msdn.microsoft.com/en-us/library/windows/desktop/dd373592(v=vs.85).aspx
 }} (MSAA) \cite{whitePaper:bestPracticesForAccessibleFlashDesign}. If an author of Flash content adds the required accessibility information into the content, Flash can expose their content to screen readers \cite{inproceedings:automaticAccesibilityTranscodingForFlashContent}.
@@ -622,7 +628,10 @@ However there are some limitations with this system. Flash exposes information f
 
 % could talk about the survey in 'accessibility evaluation for multiemedia content'. but this was a while ago, so may not be relevant anymore?
 
-Accessible environments are most easily achieved through the use of HTML pages created according to Web content accessibility guidelines \cite{incollection:accessibilityEvaluationForMultimediaContent}, thus 
+In HTML5, default video controls can be included using the `controls' attribute on the \textless video\textgreater tag. However since these controls are not all contrable via the keyboard %citation
+they do not meet accessibility guidelines. Moreno et al. developed an accessible HTML5 video player by adding HTML buttons to control the video player that can be controlled by a screen reader\cite{incollection:html5SupportForAnAccessibleWeb}.
+
+In conclusion, accessible environments are most easily achieved through the use of HTML pages created according to Web content accessibility guidelines \cite{incollection:accessibilityEvaluationForMultimediaContent}.
 
 \section{Conclusion}
 The conclusion goes here.
