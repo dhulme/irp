@@ -567,10 +567,43 @@ Ilias et al. conducted a study to analyse the video streaming performance betwee
 Accessibility on the web is governed by the W3C 2008 recommendation, Web Content Accessibility Guidelines (WCAG)\footnote{Web Content Accessibility Guidelines (WCAG) 2.0: \url{http://www.w3.org/TR/WCAG20/}}. More recently, The User Agent Accessibility Guidelines (UAAG), a standard to provide additional advice on the application user interface is in development \cite{website:implementingUAAG}.
 
 % did they actually propose it?
-Moreno et al. propose three areas that must be considered to deliver accessible multimedia content: accessible video, accessible web page and accessible user interaction \cite{article:disablityStandardsForMultimediaOnTheWeb}. Firstly, the video must provide  
+Moreno et al. propose three areas that must be considered to deliver accessible multimedia content: accessible video, accessible web page and accessible user interaction \cite{article:disablityStandardsForMultimediaOnTheWeb}.
 
-% video
-% subtitles, audio, transcripts. 
+\subsection{Accessible Video}
+WCAG 2.0 Guideline 1.2 requires that developers provide alternatives for time-based media such as alternative text, captions, audio description and sign language as shown in Table \ref{tab:wcag2Guidelines} \cite{standard:wcag2}.
+
+\begin{table}
+  \caption{WCAG 2.0 Guidelines\cite{standard:wcag2}}
+  \label{tab:wcag2Guidelines}
+    \begin{tabular}{|l|l|l|}
+    \hline
+    \textbf{Guideline}          & \textbf{Type} & \textbf{Conformance level} \\ \hline
+    1.1.1 Non-text Content                 & All         & A                 \\ \hline
+    1.2.1 Alternative for time-based media & Prerecorded & A                 \\ \hline
+    1.2.2 Captions                         & Prerecorded & A                 \\ \hline
+    1.2.4 Captions                         & Live        & AA                \\ \hline
+    1.2.5 Audio Description                & Prerecorded & AA                \\ \hline
+    1.2.6 Sign Language                    & Prerecorded & AAA               \\ \hline
+    \end{tabular}
+\end{table}
+
+The W3C provides documents detailing how these guidelines can be met for different technologies such as Flash and Silverlight \footnote{Flash Techniques for WCAG 2.0: \url{http://www.w3.org/TR/WCAG20-TECHS/flash.html\#FLASH11}} \footnote{Silverlight Techniques for WCAG 2.0: \url{http://www.w3.org/TR/WCAG20-TECHS/silverlight.html}}. For example the Flash document explains how developers can add subtitles to their Flash videos using an XML file to meet WCAG 2.0 Guideline 1.2.2 \cite{website:flashTechniquesForWCAG}.
+
+Pfeiffer and Parker describe existing implementations for supporting subtitles for HTML5 video \cite{inproceedings:accessibilityForTheHTML5VideoElement}. They describe the work of Jan Gerber who uses JavaScript to load subtitles from a text file and display them on screen in time with an HTML5 video\footnote{Jan Gerber, jquery.srt.js: \url{http://v2v.cc/~j/jquery.srt/}} \cite{inproceedings:accessibilityForTheHTML5VideoElement}. HTML5 specifies a \textless track\textgreater tag that can be used to specify timed text tracks for media elements, see Figure \ref{lst:trackExample} \cite{standard:html5}. Currently implementations vary by browser and cross-browser native support the track element is some way off. %citation?
+
+\begin{figure}
+\label{lst:trackExample}
+\caption{HTML5 Track Example}
+\begin{lstlisting}[frame=single]
+<video>
+  <source src="video.webm">
+  <track src="subtitles.vtt" label="English subtitles" kind="subtitles" srclang="en"></track>
+</video>
+\end{lstlisting}
+\end{figure}
+
+% could also talk about embedding in file....
+%Instead of accessibility data can be stored within container formats such as Ogg %\cite{inproceedings:accessibilityForTheHTML5VideoElement}. 
 
 % web page 
 % how embedded in web page
