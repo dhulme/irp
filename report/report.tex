@@ -564,9 +564,32 @@ Ilias et al. conducted a study to analyse the video streaming performance betwee
 \end{figure} 
 
 \section{Accessibility}
-One of the key problems with plug-in based approaches such as Flash or Silverlight is that any video playback controls are generally inaccessible to screen readers who read web pages based on HTML tags \cite{inproceedings:transformingFlashToXML}\ cite{incollection:accessibilityEvaluationForMultimediaContent}. Plug-in content is delivered in a binary format and determining the structure of the content at runtime is near impossible \cite{inproceedings:transformingFlashToXML}.
+Accessibility on the web is governed by the W3C 2008 recommendation, Web Content Accessibility Guidelines (WCAG)\footnote{Web Content Accessibility Guidelines (WCAG) 2.0: \url{http://www.w3.org/TR/WCAG20/}}. More recently, The User Agent Accessibility Guidelines (UAAG), a standard to provide additional advice on the application user interface is in development \cite{website:implementingUAAG}.
 
-blah blah blah
+% did they actually propose it?
+Moreno et al. propose three areas that must be considered to deliver accessible multimedia content: accessible video, accessible web page and accessible user interaction \cite{article:disablityStandardsForMultimediaOnTheWeb}. Firstly, the video must provide  
+
+% video
+% subtitles, audio, transcripts. 
+
+% web page 
+% how embedded in web page
+
+% user interaction
+% interaction with user - clicking buttons etc
+
+
+One of the key problems with plug-in based approaches such as Flash or Silverlight is that any video playback controls are generally inaccessible to screen readers who read web pages based on HTML tags \cite{inproceedings:transformingFlashToXML} \cite{incollection:accessibilityEvaluationForMultimediaContent}. Plug-in content is delivered in a binary format and determining the structure of the content at runtime is near impossible \cite{inproceedings:transformingFlashToXML}.
+
+Adobe has provided a document, ``Best Practices for Accessible Flash Design'' which describes how Flash content can be understood by screen readers through Microsoft Active Accessibility\footnote{Microsoft Active Accessibility: \url{http://msdn.microsoft.com/en-us/library/windows/desktop/dd373592(v=vs.85).aspx
+}} (MSAA) \cite{whitePaper:bestPracticesForAccessibleFlashDesign}. If an author of Flash content adds the required accessibility information into the content, Flash can expose their content to screen readers \cite{inproceedings:automaticAccesibilityTranscodingForFlashContent}.
+
+% maybe I try and duplicate their findings?
+However there are some limitations with this system. Flash exposes information for buttons even if the button has no active behaviour. Sato et al. found that the MSAA information for the Flash YouTube player states that there are 13 buttons in the player, where in fact there are only 5 shown to users. Some of the 13 buttons had no functional content and others had no keyboard access and so were inaccessible to blind users \cite{inproceedings:automaticAccesibilityTranscodingForFlashContent}.
+
+% could talk about the survey in 'accessibility evaluation for multiemedia content'. but this was a while ago, so may not be relevant anymore?
+
+Accessible environments are most easily achieved through the use of HTML pages created according to Web content accessibility guidelines \cite{incollection:accessibilityEvaluationForMultimediaContent}, thus 
 
 \section{Conclusion}
 The conclusion goes here.
