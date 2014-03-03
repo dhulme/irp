@@ -561,12 +561,15 @@ Video content delivered via HTTP streaming methods is cached by the browser. The
 
 Whilst content delivered over traditional streaming protocols such as RTMP is not cached, it is possible to capture the stream from the browser and save to a file using tools such as RTMPDumpHelper\footnote{RTMPDumpHelper by Nir Sofer: \url{http://www.nirsoft.net/utils/rtmp_dump_helper.html}}. Content providers can make this technique more difficult by preventing unauthorised clients from accessing the video stream using technologies such as Adobe's SWF Verification\footnote{SWF verification for Protected HTTP Dynamic Streaming: \url{http://www.adobe.com/devnet/adobe-media-server/articles/swf-verification-protected-http-dynamic-streaming.html}}. 
 
-Once a user obtains the original file, Digital Rights Management (DRM) technologies can be used to prevent playback
+In addition Adobe offers encrypted RTMP and Flash Access, a solution that sits between the Flash player and the browser to protect streamed content \cite{whitePaper:flashAccess}.
+% could talk more about flash access if we need to
 
+If a user obtains the original file, Digital Rights Management (DRM) technologies such as Microsoft's Windows Media DRM\footnote{Binding digital content to a portable storage device or the like in a digital rights management (DRM) system: \url{http://www.google.com/patents/US7010808}} or Apple's FairPlay can be used to control or prevent playback.
 
-HTML5 does not specify a Digital Rights Management (DRM) system \cite{article:HTML5LeadsAWebRevolution}.
-% occluding
-% - 
+HTML5 does not specify a Digital Rights Management (DRM) system \cite{article:HTML5LeadsAWebRevolution}. However in September 2013, Tim Berners-Lee approved supporting the playback of protected content as part of the HTML Working Group's charter\footnote{HTML Working Group Charter: \url{http://www.w3.org/2013/09/html-charter.html}} culminating in the Encrypted Media Extensions draft\footnote{Encrypted Media Extensions: \url{https://dvcs.w3.org/hg/html-media/raw-file/tip/encrypted-media/encrypted-media.html}} \cite{email:newHTMLCharter}.
+% could mention how tim justified his decision
+Whilst some were critical of this, I believe it is important to provide a framework for DRM technologies to get the bit content providers on board with HTML5 video \cite{website:EEFDRM}. 
+
 
 \section{Performance}
 Globally, mobile data traffic will increase 13-fold between 2012 and 2017 \cite{website:ciscoForecastAndMethodology}. This will lead to an increasing amount of internet video being consumed on mobile devices. Such devices will be less powerful than the typical desktop computer and will have an emphasis on optimising their battery life. It is important that watching an HTML5 video is not a large drain on resources. % could probably say this better.
