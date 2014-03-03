@@ -484,17 +484,20 @@ However, for any new web technology to gain acceptance it must be comparable to 
 
 A typical way users access video multimedia is through an embedded video on a web page. Typically this has been achieved through the use of third party plug-ins such as Adobe Flash\footnote{Adobe Flash Player: \url{http://www.adobe.com/uk/software/flash/about/}}, henceforth referred to as Flash, or Microsoft Silverlight\footnote{Microsoft Silverlight: \url{http://www.microsoft.com/silverlight/}}, now referred to as Silverlight. Flash was well on the way to becoming the de facto standard for embedding video into web pages \cite{article:HTML5LeadsAWebRevolution}. However, in 2010 Apple announced that they would not allow Flash on their mobile devices, citing the closed nature of Flash, reliability, security and performance as concerns \cite{website:appleFlash}. Watanabe et al. also raised concerns regarding the security of Flash \cite{inproceedings:flashSecurity}. An industry agreed standard addressing these concerns is required.
 
-HTML5, an emerging specification from the W3C, includes a \texttt{video} element definition. This element enables videos to be embedded directly into a web page\cite{standard:html5}. Natively embedding videos into web pages removes the web browser's dependence on a third party plug-in, increasing openness. %more benefits?
+HTML5, an emerging specification from the W3C, includes a video element definition. This element enables videos to be embedded directly into a web page\cite{standard:html5}. Natively embedding videos into web pages removes the web browser's dependence on a third party plug-in, increasing openness. %more benefits?
 In addition it opens new possibilities for the integration of video multimedia with other web content.
 
 However, any replacement for embedding video content must be suitable and comparable to the current technology in use. This paper will research key areas relating to the delivery of video content to user agents and the subsequent user interaction with the video to examine whether HTML5 video is a viable replacement for the current plug-in based technologies in use.
 
 \section{Content Delivery}
-% something to go here
-\subsection{Embedding Method}
-HTML5 specifies the \textless object\textgreater tag which allows for external resources to be embedded in a web page that are processed by a plug-in \cite{standard:html5}. As Daoust et al. noted, ``relying on third-party plug-ins to render the video works fine in a variety of use cases'' \cite{article:towardsVideoOnTheWebWithHTML5}. However, they also stated that because the video is rendered in a black box, from the browser's perspective, CSS and SVG cannot be used to style the video or apply visual effects \cite{article:towardsVideoOnTheWebWithHTML5}. The \textless video\textgreater tag directly integrates the video into the browser, alleviating these problems.
+In this section different aspects of delivering video content to user agents will be investigated.
 
-The native embedding of a video in the browser allows for improved interaction between the video and other elements in the page. Oehme et al. used this native integration to add dynamic overlays to a video containing related data from various internet sources \cite{inproceedings:theChroomaApproach}. Other applications are possible with HTML5 \textless canvas\textgreater tag, that ``provides scripts with a resolution-dependent bitmap canvas'' to which visual images can be rendered to \cite{standard:html5}. Fulton, S. and Fulton, J. describe how a canvas video puzzle application can be created by using created using this interaction \cite{book:html5canvas}. Quax et al. used a hidden video element to receive a video stream from the server. They then manipulated the video before displaying it on a canvas element \cite{inproceedings:aPracticalAndScableMethodForStreaming}.
+\subsection{Embedding Method} 
+HTML5 specifies the \textless object\textgreater~tag which allows for external resources to be embedded in a web page. The `type' attribute tells the web browser the internet media type of the content, and it can choose the appropriate plug-in to display the content \cite{standard:html5}. As Daoust et al. noted, ``relying on third-party plug-ins to render the video works fine in a variety of use cases'' \cite{article:towardsVideoOnTheWebWithHTML5}. However, they also stated that because the video is rendered in a black box, from the browser's perspective, CSS and SVG cannot be used to style the video or apply visual effects \cite{article:towardsVideoOnTheWebWithHTML5}. Problems can also be encountered if the user agent cannot find an appropriate plug-in to handle the object.
+
+The \textless video\textgreater~tag, new to HTML5, directly integrates the video into the browser, alleviating these problems. By indicating to the user agent that video content is embedded, they are able to decide how to display the content. For example, on iOS devices a place holder is presented and upon tapping launches a full screen player \cite{website:safariHTML5}.
+
+In addition, the native embedding of video content opens up new user experiences such as the work of Oehme et al. who added dynamic overlays to a video containing related data from various internet sources \cite{inproceedings:theChroomaApproach}. Other applications are possible with HTML5 \textless canvas\textgreater~tag, that ``provides scripts with a resolution-dependent bitmap canvas'' to which visual images can be rendered to \cite{standard:html5}. Fulton, S. and Fulton, J. describe how a canvas video puzzle application can be created by using created using this interaction \cite{book:html5canvas}. Quax et al. used a hidden video element to receive a video stream from the server. They then manipulated the video before displaying it on a canvas element \cite{inproceedings:aPracticalAndScableMethodForStreaming}.
 
 \subsection{Supported Formats}
 An important distinction to first make is the difference between a video container and a codec. A codec is the format in which the audio or video is encoded. Some example video codecs include H.264, Theora, VP6 and VP8. A container describes the structure of the file and what codecs are in use \cite{website:videoFormatsGuide}. Some example containers include MP4, WebM, Ogg, AVI and FLV.
@@ -658,8 +661,19 @@ they do not meet accessibility guidelines. Moreno et al. developed an accessible
 In conclusion, accessible environments are most easily achieved through the use of HTML pages created according to Web content accessibility guidelines \cite{incollection:accessibilityEvaluationForMultimediaContent}.
 
 \section{Conclusion}
-The conclusion goes here.
+HTML5 video aims to create a more open web by not relying on third party plug-ins. It enables richer applications of video on the web, and improved support for mobile devices. %check these claims are backed up
 
+Whilst HTML5 implementations differ between user agents, ... % big players are buzzing? consolidation is coming?
+Through a variety of streaming methods it is possible to deliver both live and pre-recorded content and provide an enjoyable experience to users through adaptive streaming.
+
+Content protection is also addressed in HTML5 video encouraging the big boyz to stay. % something like that?
+
+The performance of HTML5 video varies across user agents, however it is not enough to cause issuez and in future things will be improved. %lol
+
+Finally, HTML5 video greatly improves the accessibility of video on the web allowing screen readers to properly control the content and providing support for embedding captions.
+
+In conclusion, HTML5 video is a viable replacement for plug-in based approaches albeit with some work to do. The support for HTML5 video by YouTube %citation? https://www.youtube.com/html5
+will only drive acceptance and market penetration. %lol
 
 
 % An example of a floating figure using the graphicx package.
