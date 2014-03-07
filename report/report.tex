@@ -575,9 +575,12 @@ These protocols are also not envisioned as the main streaming methods for HTML5,
 There are two classes of media that can be delivered to clients: on-demand media and live media \cite{techreport:aReviewOfHTTPLiveStreaming}. On-demand media has been previously recorded and encoded whilst live media is captured, compressed and transmitted on the fly thus requiring significant computing resources \cite{techreport:aReviewOfHTTPLiveStreaming}. % this is almost a direct quote, quotation marks?
 Any technology used to embed video in web pages should support the delivery of both these media types.
 
-% rtp can do both - so flash is fine
-% 
+Plug-in based approaches such as Flash are capable of streaming live video to user agents through Adobe's Flash Media Server (FMS) using RTMP \cite{techreport:aReviewOfHTTPLiveStreaming}. However, these technologies have difficulties traversing firewalls and NAT and require dedicated network infrastructure \cite{inproceedings:dynamicAdapativeHTTPStreamingLive}. % may not be the best citation
 
+A very simple video streaming solution for HTML5 is an HTTP stream from VLC media player\footnote{VLC media player: \url{http://www.videolan.org/vlc/}}. The web browser makes an HTTP request for the stream and once buffered it can begin playing. However this is viable real world solution as the bitrate is constant and... % there must be other reasons why
+More sophisticated live streaming solutions can be provided by HLS or DASH \cite{techreport:aReviewOfHTTPLiveStreaming} \cite{inproceedings:dynamicAdapativeHTTPStreamingLive}. 
+
+% more detail here about DASH live streaming
 
 \subsection{Content Protection}
 All video content that is delivered to user agents is vulnerable to the analogue hole. At some point in the delivery chain there must be an analogue component, be it a loud speaker or video display, in order for a user to digest the content. At this point the analogue signals can be recorded, digitised and redistributed, their by bypassing any content protection measures that have been put in place \cite{inproceedings:closingTheAnalogueHole}. %citation really applies to whole paragraph...
@@ -667,13 +670,9 @@ Pfeiffer and Parker describe existing implementations for supporting subtitles f
 % http://git.xiph.org/?p=ffmpeg2theora.git;a=blob_plain;f=subtitles.txt;hb=HEAD
 
 \subsection{Accessible Web Page}
-% web page 
-% how embedded in web page
-% not sure what to say here, may remove it
+Media included on a web page must be done so considering accessibility. If a link is provided to a video it must meet certain criteria described in WCAG 2.0 Guideline 4.1.2. If it is embedded, there any no relevant WCAG 2.0 guidelines.
 
 \subsection{Accessible User Interaction}
-% user interaction
-% interaction with user - clicking buttons etc
 WCAG 2.0 Guideline 2.2.2 states that for any moving content, there must exist some mechanism to pause the content. Mostly all video embedding solutions provide this. Guideline 2.1.1 states that all content must be operable through the keyboard \cite{standard:wcag2}. One of the key problems with plug-in based approaches such as Flash or Silverlight is that any video playback controls are generally inaccessible to screen readers who read web pages based on HTML tags \cite{inproceedings:transformingFlashToXML} \cite{incollection:accessibilityEvaluationForMultimediaContent}. Plug-in content is delivered in a binary format and determining the structure of the content at runtime is near impossible \cite{inproceedings:transformingFlashToXML}.
 
 Adobe has provided a document, ``Best Practices for Accessible Flash Design'' which describes how Flash content can be understood by screen readers through Microsoft Active Accessibility\footnote{Microsoft Active Accessibility: \url{http://msdn.microsoft.com/en-us/library/windows/desktop/dd373592(v=vs.85).aspx
