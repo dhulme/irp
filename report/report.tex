@@ -483,7 +483,7 @@ However, for any new web technology to gain acceptance it must be comparable to 
 \section{Introduction}
 \IEEEPARstart{I}{nternet} video traffic is growing. Cisco predict that by 2017, consumer Internet video traffic will account for 69\% of all consumer internet traffic \cite{website:ciscoForecastAndMethodology}. In addition, nearly half of all internet traffic will originate from a non-PC device \cite{website:ciscoForecastAndMethodology}. It is therefore important to ensure that technologies are in place to deliver this content to users and provide a high quality viewing experience across a wide range of devices and platforms.
 
-A typical way users access video multimedia is through an embedded video on a web page. Typically this has been achieved through the use of third party plug-ins such as Adobe Flash\footnote{Adobe Flash Player: \url{http://www.adobe.com/uk/software/flash/about/}}, henceforth referred to as Flash, or Microsoft Silverlight\footnote{Microsoft Silverlight: \url{http://www.microsoft.com/silverlight/}}, now referred to as Silverlight. Flash was well on the way to becoming the de facto standard for embedding video into web pages,  \cite{article:HTML5LeadsAWebRevolution}. however in 2010 Apple announced that they would not allow Flash on their mobile devices, citing the closed nature of Flash, reliability, security and performance as concerns \cite{website:appleFlash}. Watanabe et al. also raised concerns regarding the security of Flash \cite{inproceedings:flashSecurity}. An industry agreed standard addressing these concerns is required.
+A typical way users access video multimedia is through an embedded video on a web page. Typically this has been achieved through the use of third party plug-ins such as Adobe Flash\footnote{Adobe Flash Player: \url{http://www.adobe.com/uk/software/flash/about/}}, henceforth referred to as Flash, or Microsoft Silverlight\footnote{Microsoft Silverlight: \url{http://www.microsoft.com/silverlight/}}, now referred to as Silverlight. Flash was well on the way to becoming the de facto standard for embedding video into web pages \cite{article:HTML5LeadsAWebRevolution}. However in 2010 Apple announced that they would not allow Flash on their mobile devices, citing the closed nature of Flash, reliability, security and performance as concerns \cite{website:appleFlash}. Watanabe et al. also raised concerns regarding the security of Flash \cite{inproceedings:flashSecurity}. An industry agreed standard addressing these concerns is required.
 
 HTML5, an emerging specification from the W3C, includes a definition for a video element. This element enables videos to be embedded directly into a web page \cite{standard:html5}. Natively embedding videos into web pages removes the web browser's dependence on a third party plug-in, increasing openness. In addition it allows the web browser to handle the video content in any manor it wishes, leading to an enhanced experience across different devices. Finally, it opens new possibilities for the integration of video multimedia with other web content.
 
@@ -497,7 +497,7 @@ HTML5 specifies the \textless object\textgreater~tag which allows for external r
 
 The \textless video\textgreater~tag, new to HTML5, directly integrates the video into the browser, alleviating these problems. By indicating to the user agent that video content is embedded, they are able to decide how to display the content. For example, on iOS devices a place holder is presented and upon tapping launches a full screen player \cite{website:safariHTML5}.
 
-In addition, the native embedding of video content opens up new user experiences such as the work of Oehme et al. who added dynamic overlays to a video containing related data from various internet sources \cite{inproceedings:theChroomaApproach}. Other applications are possible with HTML5 \textless canvas\textgreater~tag, that ``provides scripts with a resolution-dependent bitmap canvas'' to which visual images can be rendered to \cite{standard:html5}. Fulton, S. and Fulton, J. describe how a canvas video puzzle application can be created by using created using this interaction \cite{book:html5canvas}. Quax et al. used a hidden video element to receive a video stream from the server. They then manipulated the video before displaying it on a canvas element \cite{inproceedings:aPracticalAndScableMethodForStreaming}.
+In addition, the native embedding of video content opens up new user experiences such as the work of Oehme et al. who added dynamic overlays to a video containing related data from various internet sources \cite{inproceedings:theChroomaApproach}. Other applications are possible with HTML5 through the \textless canvas\textgreater~tag that gives developers a resolution-dependent bitmap canvas to which visual images can be rendered \cite{standard:html5}. Fulton, S. and Fulton, J. describe how a canvas video puzzle application can be created by using created using this interaction \cite{book:html5canvas}. Quax et al. used a hidden video element to receive a video stream from the server. They then manipulated the video before displaying it on a canvas element \cite{inproceedings:aPracticalAndScableMethodForStreaming}.
 
 \subsection{Supported Formats}
 An important distinction to make is the difference between a video container and a codec. A codec is the format in which the audio or video is encoded. Some example video codecs include H.264, Theora, VP6 and VP8. A container describes the structure of the file and what codecs are in use \cite{website:videoFormatsGuide}. Some example containers include MP4, WebM, Ogg, AVI and FLV.
@@ -542,8 +542,7 @@ Table \ref{tab:supportedCodecsAndContainers} illustrates how there is inconsiste
 \end{figure}
 
 \subsection{Delivery Methods}
-% I think these links should probs be footnotes
-There are two distinct approaches for delivering video content to clients. The first is traditional streaming through protocols such as Real Time Streaming Protocol (RTSP)\footnote{RFC 2326: \url{http://www.ietf.org/rfc/rfc2326.txt}} with Real-time Transport Protocol (RTP) \footnote{RFC 3550: \url{http://www.ietf.org/rfc/rfc3550.txt}} or Adobe's Real Time Message Protocol (RTMP)\footnote{Real-Time Messaging Protocol (RTMP) specification: \url{http://www.adobe.com/devnet/rtmp.html}} \cite{article:areWeInTheMiddleOfAVideoStreamingRevolution}. These are push-based streaming protocols where the ``server streams packets to the client until the client interrupts or stops the session'' \cite{article:watchingVideoOverTheWeb} with the client not store storing the file on their machine. A media server is required to manage the streams, an approach traditionally used by Flash \cite{article:flashPlayer}.
+There are two distinct approaches for delivering video content to clients. The first is traditional streaming through protocols such as Real Time Streaming Protocol (RTSP)\footnote{RFC 2326: \url{http://www.ietf.org/rfc/rfc2326.txt}} with Real-time Transport Protocol (RTP) \footnote{RFC 3550: \url{http://www.ietf.org/rfc/rfc3550.txt}} or Adobe's Real Time Message Protocol (RTMP)\footnote{Real-Time Messaging Protocol (RTMP) specification: \url{http://www.adobe.com/devnet/rtmp.html}} \cite{article:areWeInTheMiddleOfAVideoStreamingRevolution}. These are push-based streaming protocols where the server streams packets to the client until the client interrupts or stops the session \cite{article:watchingVideoOverTheWeb}. The streamed packets are not cached on the client \cite{article:watchingVideoOverTheWeb}. A media server is required to manage the streams, an approach traditionally used by Flash \cite{article:flashPlayer}.
 
 The second are pulled-based approaches usually over the HTTP protocol. Delivering over HTTP allows Content Delivery Networks (CDNs) to be used which can improve caching, efficiency and reduce licensing costs \cite{article:towardsVideoOnTheWebWithHTML5}\cite{inproceedings:HTTPAsTheNarrowWaist}. In addition, HTTP traffic can traverse firewalls and Network Address Translation (NAT) more simply than other transport protocols. %citation? could use several, not sure of the best one
 
@@ -558,7 +557,7 @@ To enable skipping to any point in the video, the stream can be divided into chu
 \label{fig:mp4Structure}
 \end{figure} 
 
-These protocols also provide adaptive streaming. Between segment requests, the client can access the current network conditions, and switch between different bit rates of the same media based on the optimal bit rate achievable \cite{article:areWeInTheMiddleOfAVideoStreamingRevolution}. % this is quite a direct quote
+These protocols also provide adaptive streaming. Between segment requests, the client can access the current network conditions and switch between different bit rates of the same media based on the optimal bit rate achievable \cite{article:areWeInTheMiddleOfAVideoStreamingRevolution}. % this is quite a direct quote
 
 In order to function, these techniques rely on the delivery of a manifest file to the client to determine which URIs should be requested. % citation?
 Support therefore requires a specific plug-in, Silverlight in the case of Smooth Streaming, or support for the technology built into the HTML5 video implementation \cite{inproceedings:aSeamlessIntegrationOfAdaptiveHTTPStreaming}. % could cite 'a seamless integration of ...' which says that HLS is only supported on apple products, although this is now not quite true
@@ -578,7 +577,23 @@ Any technology used to embed video in web pages should support the delivery of b
 Plug-in based approaches such as Flash are capable of streaming live video to user agents through Adobe's Flash Media Server (FMS) using RTMP \cite{techreport:aReviewOfHTTPLiveStreaming}. However, these technologies have difficulties traversing firewalls and NAT and require dedicated network infrastructure \cite{inproceedings:dynamicAdapativeHTTPStreamingLive}. % may not be the best citation
 
 A very simple video streaming solution for HTML5 is to set up an HTTP stream from VLC media player\footnote{VLC media player: \url{http://www.videolan.org/vlc/}}. The web browser makes an HTTP request for the stream and once buffered it can begin playing. However this is viable real world solution as the bitrate is constant and... % there must be other reasons why
-More sophisticated live streaming solutions can be provided by HLS or DASH \cite{techreport:aReviewOfHTTPLiveStreaming} \cite{inproceedings:dynamicAdapativeHTTPStreamingLive}. 
+More sophisticated live streaming solutions can be provided by HLS or DASH, levering the existing CDNs to distribute content \cite{techreport:aReviewOfHTTPLiveStreaming} \cite{inproceedings:dynamicAdapativeHTTPStreamingLive}. 
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.5in]{streaming-diagram}
+\caption{HLS using Amazon services architecture \cite{website:iPhoneHLSAmazon}}
+\label{fig:hlsAmazonArch}
+\end{figure} 
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.5in]{streaming-architecture}
+\caption{Live streaming over HTTP architecture \cite{techreport:aReviewOfHTTPLiveStreaming}}
+\label{fig:HTTPLiveStreamingArch}
+\end{figure}
+
+Fecheyr-Lippens noted that Akamai, the world's leading CDN, has a specific solution for delivering video to iOS devices using HLS \cite{whitePaper:akamaiHDNetwork}\cite{techreport:aReviewOfHTTPLiveStreaming}. He also described McDonald's work of setting up HLS through Amazon services \cite{website:iPhoneHLSAmazon}. McDonald's architecture for delivering live video content to Apple user agents is shown in Figure \ref{fig:hlsAmazonArch}. A generalised architecture for live streaming over HTTP is shown in Figure \ref{fig:HTTPLiveStreamingArch}.
 
 % could add more detail here about DASH live streaming?
 
@@ -689,6 +704,9 @@ In HTML5, default video controls can be included using the `controls' attribute 
 they do not meet accessibility guidelines. Moreno et al. developed an accessible HTML5 video player by adding HTML buttons to control the video player that can be controlled by a screen reader \cite{incollection:html5SupportForAnAccessibleWeb}.
 
 In conclusion, accessible environments are most easily achieved through the use of HTML pages created according to Web content accessibility guidelines \cite{incollection:accessibilityEvaluationForMultimediaContent}.
+
+\section{Discussion}
+
 
 \section{Conclusion}
 HTML5 video aims to create a more open web by not relying on third party plug-ins. It enables richer applications of video on the web, and improved support for mobile devices. %check these claims are backed up
