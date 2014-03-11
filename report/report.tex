@@ -379,6 +379,7 @@
 % Listings
 \usepackage{listings}
 
+\lstdefinelanguage{HTML5}{}
 
 % *** Do not adjust lengths that control margins, column widths, etc. ***
 % *** Do not use packages that alter fonts (such as pslatex).         ***
@@ -528,13 +529,13 @@ Table \ref{tab:supportedCodecsAndContainers} illustrates how there is inconsiste
 \begin{figure}
 \label{lst:HTML5VideoExample}
 \caption{HTML5 Video Example}
-\begin{lstlisting}[frame=single]
+\begin{lstlisting}[frame=single,language=HTML5]
 <video>
- <source src="video.mp4" type="video/mp4">
- <source src="video.ogg" type="video/ogg">
- <source src="video.webm" type="video/webm">
+ <source src="vid.mp4" type="video/mp4">
+ <source src="vid.ogg" type="video/ogg">
+ <source src="vid.webm" type="video/webm">
  <object>
-  <param name="movie" value="movie.flv">
+  <param name="movie" value="vid.flv">
  </object>
 </video>
 \end{lstlisting}
@@ -580,7 +581,7 @@ Plug-in based approaches such as Flash are capable of streaming live video to us
 A very simple video streaming solution for HTML5 is an HTTP stream from VLC media player\footnote{VLC media player: \url{http://www.videolan.org/vlc/}}. The web browser makes an HTTP request for the stream and once buffered it can begin playing. However this is viable real world solution as the bitrate is constant and... % there must be other reasons why
 More sophisticated live streaming solutions can be provided by HLS or DASH \cite{techreport:aReviewOfHTTPLiveStreaming} \cite{inproceedings:dynamicAdapativeHTTPStreamingLive}. 
 
-% more detail here about DASH live streaming
+% could add more detail here about DASH live streaming?
 
 \subsection{Content Protection}
 All video content that is delivered to user agents is vulnerable to the analogue hole. At some point in the delivery chain there must be an analogue component, be it a loud speaker or video display, in order for a user to digest the content. At this point the analogue signals can be recorded, digitised and redistributed, their by bypassing any content protection measures that have been put in place \cite{inproceedings:closingTheAnalogueHole}. %citation really applies to whole paragraph...
@@ -633,7 +634,8 @@ WCAG 2.0 Guideline 1.2 requires that developers provide alternatives for time-ba
 \begin{table}
   \caption{WCAG 2.0 Guidelines\cite{standard:wcag2}}
   \label{tab:wcag2Guidelines}
-    \begin{tabular}{|l|l|l|}
+  	\centering
+    \begin{tabular}{|l|l|p{1.5cm}|}
     \hline
     \textbf{Guideline}          & \textbf{Type} & \textbf{Conformance level} \\ \hline
     1.1.1 Non-text Content                 & All         & A                 \\ \hline
@@ -654,7 +656,7 @@ Pfeiffer and Parker describe existing implementations for supporting subtitles f
 \begin{figure}
 \label{lst:trackExample}
 \caption{HTML5 Track Example}
-\begin{lstlisting}[frame=single]
+\begin{lstlisting}[frame=single,language=HTML5]
 <video>
   <source src="video.webm">
   <track src="subtitles.vtt"
