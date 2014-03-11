@@ -543,11 +543,11 @@ Table \ref{tab:supportedCodecsAndContainers} illustrates how there is inconsiste
 
 \subsection{Delivery Methods}
 % I think these links should probs be footnotes
-There are two distinct approaches for delivering video content to clients. The first is traditional streaming through protocols such as Real Time Streaming Protocol (RTSP) \cite{misc:rfcRSTP} with Real-time Transport Protocol (RTP) \cite{misc:rfcRTP} or Adobe's Real Time Message Protocol (RTMP)\cite{website:RTMP} \cite{article:areWeInTheMiddleOfAVideoStreamingRevolution}. These are push-based streaming protocols where the ``server streams packets to the client until the client interrupts or stops the session'' \cite{article:watchingVideoOverTheWeb} with the client not store storing the file on their machine. A media server is required to manage the streams, an approach traditionally used by Flash \cite{article:flashPlayer}.
+There are two distinct approaches for delivering video content to clients. The first is traditional streaming through protocols such as Real Time Streaming Protocol (RTSP)\footnote{RFC 2326: \url{http://www.ietf.org/rfc/rfc2326.txt}} with Real-time Transport Protocol (RTP) \footnote{RFC 3550: \url{http://www.ietf.org/rfc/rfc3550.txt}} or Adobe's Real Time Message Protocol (RTMP)\footnote{Real-Time Messaging Protocol (RTMP) specification: \url{http://www.adobe.com/devnet/rtmp.html}} \cite{article:areWeInTheMiddleOfAVideoStreamingRevolution}. These are push-based streaming protocols where the ``server streams packets to the client until the client interrupts or stops the session'' \cite{article:watchingVideoOverTheWeb} with the client not store storing the file on their machine. A media server is required to manage the streams, an approach traditionally used by Flash \cite{article:flashPlayer}.
 
 The second are pulled-based approaches usually over the HTTP protocol. Delivering over HTTP allows Content Delivery Networks (CDNs) to be used which can improve caching, efficiency and reduce licensing costs \cite{article:towardsVideoOnTheWebWithHTML5}\cite{inproceedings:HTTPAsTheNarrowWaist}. In addition, HTTP traffic can traverse firewalls and Network Address Translation (NAT) more simply than other transport protocols. %citation? could use several, not sure of the best one
 
-Progressive download is the simplest HTTP approach. The client begins downloading the video and begins to play when it has reached a minimum threshold \cite{article:watchingVideoOverTheWeb}. However there are two problems with this approach. Firstly the client is unable to jump to a point in the video that has not downloaded and secondly there is no guarantee that the delivery rate will remain constant \cite{article:towardsVideoOnTheWebWithHTML5}. %To address these concerns more intelligent streaming technologies have been developed. % could mention http range requests, see 'to chunk or not to chunk', but not that important
+Progressive download is the simplest HTTP approach. The client begins downloading the video and begins to play when it has reached a minimum threshold \cite{article:watchingVideoOverTheWeb}. However there are two problems with this approach. Firstly the client is unable to jump to a point in the video that has not downloaded and secondly there is no guarantee that the delivery rate will remain constant, which could lead to unwanted latency \cite{article:towardsVideoOnTheWebWithHTML5}. %is latency the right word? %To address these concerns more intelligent streaming technologies have been developed. % could mention http range requests, see 'to chunk or not to chunk', but not that important
 
 To enable skipping to any point in the video, the stream can be divided into chunks to be independently requested by the client \cite{article:areWeInTheMiddleOfAVideoStreamingRevolution}. Apple's HTTP Live Streaming (HLS)\footnote{HTTP Live Streaming: \url{http://tools.ietf.org/html/draft-pantos-http-live-streaming-12}} and Microsoft's Smooth Streaming\footnote{Microsoft Smooth Streaming: \url{http://www.iis.net/downloads/microsoft/smooth-streaming}} are example protocols that use this technique \cite{article:watchingVideoOverTheWeb}. Smooth streaming contains all the fragments in a single MP4 file as shown in Figure \ref{fig:mp4Structure} \cite{article:watchingVideoOverTheWeb}. HLS uses a different approach and stores each media fragment in a separate file \cite{article:watchingVideoOverTheWeb}.
 
@@ -565,20 +565,19 @@ Support therefore requires a specific plug-in, Silverlight in the case of Smooth
 
 Dynamic Adaptive Streaming over HTTP (DASH)\footnote{Dynamic
 adaptive streaming over HTTP (DASH) ISO/IEC 23009-1} is an international standard developed by the Moving Picture Expert Group (MPEG) in order to provide an open alternative %is it open?
-to proprietary protocols such as HLS and Smooth Streaming. To play DASH content, a client first obtains a manifest file in the form of an Media Presentation Description (MPD) \cite{article:MPEGDASH}. Using this data the client selects the appropriate encoded file and segment and requests over HTTP \cite{article:MPEGDASH}.
+to proprietary protocols such as HLS and Smooth Streaming. To play video content over DASH, a client first obtains a manifest file in the form of an Media Presentation Description (MPD) \cite{article:MPEGDASH}. Using this data the client selects the appropriate encoded file and segment and requests over HTTP \cite{article:MPEGDASH}.
 
-Rainer et al. describe a way to use DASH in combination with the HTML5 video element by utilising Media Source Extensions (MSE)\footnote{Media Source Extensions (MSE): \url{http://www.w3.org/TR/media-source/}} which allow JavaScript to construct media streams for the HTML5 audio and video elements \cite{standard:mse} \cite{inproceedings:aSeamlessIntegrationOfAdaptiveHTTPStreaming}.
+Rainer et al. describe a way to use DASH in combination with the HTML5 video element by utilising Media Source Extensions (MSE)\footnote{Media Source Extensions (MSE): \url{http://www.w3.org/TR/media-source/}} which allow JavaScript to construct media streams for the HTML5 audio and video elements \cite{standard:mse} \cite{inproceedings:aSeamlessIntegrationOfAdaptiveHTTPStreaming}. However, currently MSE is only supported on Chrome and Firefox, so it is not a complete solution as of yet \cite{website:mdnMediaSource}.
 
-HTML5 video does not declare if implementations should support streaming through protocols other than HTTP - currently most browsers do not. %citation?
-These protocols are also not envisioned as the main streaming methods for HTML5, where HTTP is preferred \cite{article:towardsVideoOnTheWebWithHTML5}. However, currently MSE is only supported on Chrome and Firefox, so it is not a complete solution as of yet \cite{website:mdnMediaSource}.
+HTML5 video does not declare what streaming protocols implementations should support. Typically, HTTP streaming is supported using a variety of techniques as supposed to traditional streaming protocols such as RTP, which are not envisioned as the main streaming methods for HTML5 \cite{article:towardsVideoOnTheWebWithHTML5}.
 
 \subsection{Delivery Classes}
-There are two classes of media that can be delivered to clients: on-demand media and live media \cite{techreport:aReviewOfHTTPLiveStreaming}. On-demand media has been previously recorded and encoded whilst live media is captured, compressed and transmitted on the fly thus requiring significant computing resources \cite{techreport:aReviewOfHTTPLiveStreaming}. % this is almost a direct quote, quotation marks?
+There are two classes of media that can be delivered to clients: on-demand media and live media \cite{techreport:aReviewOfHTTPLiveStreaming}. On-demand media has been previously recorded and encoded, whilst live media is captured, compressed and transmitted on the fly thus requiring significant computing resources \cite{techreport:aReviewOfHTTPLiveStreaming}. % this is almost a direct quote, quotation marks?
 Any technology used to embed video in web pages should support the delivery of both these media types.
 
 Plug-in based approaches such as Flash are capable of streaming live video to user agents through Adobe's Flash Media Server (FMS) using RTMP \cite{techreport:aReviewOfHTTPLiveStreaming}. However, these technologies have difficulties traversing firewalls and NAT and require dedicated network infrastructure \cite{inproceedings:dynamicAdapativeHTTPStreamingLive}. % may not be the best citation
 
-A very simple video streaming solution for HTML5 is an HTTP stream from VLC media player\footnote{VLC media player: \url{http://www.videolan.org/vlc/}}. The web browser makes an HTTP request for the stream and once buffered it can begin playing. However this is viable real world solution as the bitrate is constant and... % there must be other reasons why
+A very simple video streaming solution for HTML5 is to set up an HTTP stream from VLC media player\footnote{VLC media player: \url{http://www.videolan.org/vlc/}}. The web browser makes an HTTP request for the stream and once buffered it can begin playing. However this is viable real world solution as the bitrate is constant and... % there must be other reasons why
 More sophisticated live streaming solutions can be provided by HLS or DASH \cite{techreport:aReviewOfHTTPLiveStreaming} \cite{inproceedings:dynamicAdapativeHTTPStreamingLive}. 
 
 % could add more detail here about DASH live streaming?
@@ -587,30 +586,31 @@ More sophisticated live streaming solutions can be provided by HLS or DASH \cite
 All video content that is delivered to user agents is vulnerable to the analogue hole. At some point in the delivery chain there must be an analogue component, be it a loud speaker or video display, in order for a user to digest the content. At this point the analogue signals can be recorded, digitised and redistributed, their by bypassing any content protection measures that have been put in place \cite{inproceedings:closingTheAnalogueHole}. %citation really applies to whole paragraph...
 
 However, since this capturing process may require specialist equipment and can take a large amount of time, %not very professional sentance?
-the general user will want to access the file in its original digital form. Therefore content protection systems should focus on encrypting the digital file and occluding its location.
+the average user will want to access the file in its original digital form. Therefore content protection systems should focus on encrypting the digital file and occluding its location.
 
 All videos delivered over HTTP progressive download will have the video accessible at some URI. In HTML5 the location of the original video file can be found by examining the `src' attribute, see Figure \ref{lst:HTML5VideoExample}. For plug-in based approaches such as Flash, tools can be used to discover the URI. %is this actually how keepvid etc work?
-This approach can be prevented by including a one-time token in the URI.
+This approach can be prevented by including a one-time token in the URI. %could talk more about this
 
-Video content delivered via HTTP streaming methods is cached by the browser. The cached video data can be then extracted using tools such as VideoCacheView\footnote{VideoCacheView by Nir Sofer: \url{http://www.nirsoft.net/utils/video_cache_view.html}}. A test to capture a video from YouTube was successful.
+Video content delivered via HTTP streaming methods is cached by the browser. The cached video data can be then extracted using tools such as VideoCacheView\footnote{VideoCacheView by Nir Sofer: \url{http://www.nirsoft.net/utils/video_cache_view.html}}. A test to capture a video from YouTube was successful. % could go into more detail here?
 
 Whilst content delivered over traditional streaming protocols such as RTMP is not cached, it is possible to capture the stream from the browser and save to a file using tools such as RTMPDumpHelper\footnote{RTMPDumpHelper by Nir Sofer: \url{http://www.nirsoft.net/utils/rtmp_dump_helper.html}}. Content providers can make this technique more difficult by preventing unauthorised clients from accessing the video stream using technologies such as Adobe's SWF Verification\footnote{SWF verification for Protected HTTP Dynamic Streaming: \url{http://www.adobe.com/devnet/adobe-media-server/articles/swf-verification-protected-http-dynamic-streaming.html}}. 
 
-In addition Adobe offers encrypted RTMP and Flash Access, a solution that sits between the Flash player and the browser to protect streamed content \cite{whitePaper:flashAccess}.
+Adobe also offers encrypted RTMP and Flash Access, a solution that sits between the Flash player and the browser to protect streamed content \cite{whitePaper:flashAccess}.
 % could talk more about flash access if we need to
 
 If a user obtains the original file, Digital Rights Management (DRM) technologies such as Microsoft's Windows Media DRM\footnote{Binding digital content to a portable storage device or the like in a digital rights management (DRM) system: \url{http://www.google.com/patents/US7010808}} or Apple's FairPlay can be used to control or prevent playback.
 
 HTML5 does not specify a Digital Rights Management (DRM) system \cite{article:HTML5LeadsAWebRevolution}. However in September 2013, Tim Berners-Lee approved supporting the playback of protected content as part of the HTML Working Group's charter\footnote{HTML Working Group Charter: \url{http://www.w3.org/2013/09/html-charter.html}} culminating in the Encrypted Media Extensions draft\footnote{Encrypted Media Extensions: \url{https://dvcs.w3.org/hg/html-media/raw-file/tip/encrypted-media/encrypted-media.html}} \cite{email:newHTMLCharter}.
 % could mention how tim justified his decision
-Whilst some were critical of this, I believe it is important to provide a framework for DRM technologies to get the bit content providers on board with HTML5 video \cite{website:EEFDRM}. 
+Whilst some were critical of this, I believe it is important to provide a framework for DRM technologies to get content providers on board with HTML5 video \cite{website:EEFDRM}. 
 
 % could mention mpeg dash and drm
+% could mention how eme works?
 
 \section{Performance}
-Globally, mobile data traffic will increase 13-fold between 2012 and 2017 \cite{website:ciscoForecastAndMethodology}. This will lead to an increasing amount of internet video being consumed on mobile devices. Such devices will be less powerful than the typical desktop computer and will have an emphasis on optimising their battery life. It is important that watching an HTML5 video is not a large drain on resources. % could probably say this better.
+Globally, mobile data traffic will increase 13-fold between 2012 and 2017 \cite{website:ciscoForecastAndMethodology}. This will lead to an increasing amount of internet video being consumed on mobile devices. Such devices are less powerful than typical desktop computer and  have an emphasis on optimising their battery life. It is therefore important that watching HTML5 video uses the device's resources effectively and efficiently. % could probably say this better.
 
-Ilias et al. conducted a study to analyse the video streaming performance between Flash video and HTML5 video \cite{inproceedings:aStudyOfVideoPerformanceAnalysis}. They looked at two video performance metrics, frame rate and CPU usage, whilst streaming a video over wired and wireless networks across a variety of browsers. Their study showed that the implementation of HTML5 video in each browser had a big effect on the performance. This can be seen in Figure \ref{fig:cpuPerformanceGraph}. Overall the average CPU for Flash was 77\% and 87\% for HTML5 video. This shows that on average, HTML5 video requires 13\% more CPU power than Flash. In addition, in IE9 HTML5 video used 95\% of the CPU. This certainly has the potential to cause playback problems on mobile devices and cause frustration to users. However, the HTML5 video Chrome result suggests that the CPU usage is heavily influenced by the HTML5 video implementation. Thus over time, the situation should improve.
+Ilias et al. conducted a study to analyse the video streaming performance between Flash video and HTML5 video \cite{inproceedings:aStudyOfVideoPerformanceAnalysis}. They looked at two video performance metrics, frame rate and CPU usage, whilst streaming a video over wired and wireless networks across a variety of browsers. Their study showed that the implementation of HTML5 video in each browser had a big effect on the performance. This can be seen in Figure \ref{fig:cpuPerformanceGraph}. Overall the average CPU for Flash was 77\% and 87\% for HTML5 video. This shows that on average, HTML5 video requires 13\% more CPU power than Flash. In addition, in IE9 HTML5 video used 95\% of the CPU. This certainly has the potential to cause playback problems on mobile devices and cause frustration to users. However, the HTML5 video result for Chrome suggests that the CPU usage is heavily influenced by the HTML5 video implementation. Thus over time, the situation should improve.
 
 % could look at native decoder chips, hardware vs software decoding
 % maybe there also some additional studies on latency etc. 
@@ -623,7 +623,7 @@ Ilias et al. conducted a study to analyse the video streaming performance betwee
 \end{figure} 
 
 \section{Accessibility}
-Accessibility on the web is governed by the W3C 2008 recommendation, Web Content Accessibility Guidelines (WCAG)\footnote{Web Content Accessibility Guidelines (WCAG) 2.0: \url{http://www.w3.org/TR/WCAG20/}}. More recently, The User Agent Accessibility Guidelines (UAAG), a standard to provide additional advice on the application user interface is in development \cite{website:implementingUAAG}.
+Accessibility on the web is governed by the W3C 2008 recommendation, Web Content Accessibility Guidelines (WCAG)\footnote{Web Content Accessibility Guidelines (WCAG) 2.0: \url{http://www.w3.org/TR/WCAG20/}}. More recently, the User Agent Accessibility Guidelines (UAAG), a standard to provide additional advice on the application user interface is in development \cite{website:implementingUAAG}.
 
 % did they actually propose it?
 Moreno et al. propose three areas that must be considered to deliver accessible multimedia content: accessible video, accessible web page and accessible user interaction \cite{article:disablityStandardsForMultimediaOnTheWeb}.
@@ -632,7 +632,7 @@ Moreno et al. propose three areas that must be considered to deliver accessible 
 WCAG 2.0 Guideline 1.2 requires that developers provide alternatives for time-based media such as alternative text, captions, audio description and sign language as shown in Table \ref{tab:wcag2Guidelines} \cite{standard:wcag2}.
 
 \begin{table}
-  \caption{WCAG 2.0 Guidelines\cite{standard:wcag2}}
+  \caption{WCAG 2.0 Guidelines \cite{standard:wcag2}}
   \label{tab:wcag2Guidelines}
   	\centering
     \begin{tabular}{|l|l|p{1.5cm}|}
@@ -647,9 +647,9 @@ WCAG 2.0 Guideline 1.2 requires that developers provide alternatives for time-ba
     \end{tabular}
 \end{table}
 
-The W3C provides documents detailing how these guidelines can be met for different technologies such as Flash and Silverlight \footnote{Flash Techniques for WCAG 2.0: \url{http://www.w3.org/TR/WCAG20-TECHS/flash.html}} \footnote{Silverlight Techniques for WCAG 2.0: \url{http://www.w3.org/TR/WCAG20-TECHS/silverlight.html}}. For example the Flash document explains how developers can add subtitles to their Flash videos using an XML file to meet WCAG 2.0 Guideline 1.2.2 \cite{website:flashTechniquesForWCAG}.
+The W3C provides documents detailing how these guidelines can be met for different technologies such as Flash\footnote{Flash Techniques for WCAG 2.0: \url{http://www.w3.org/TR/WCAG20-TECHS/flash.html}} and Silverlight\footnote{Silverlight Techniques for WCAG 2.0: \url{http://www.w3.org/TR/WCAG20-TECHS/silverlight.html}}. For example, the Flash document explains how developers can add subtitles to their Flash videos using an XML file to meet WCAG 2.0 Guideline 1.2.2 \cite{website:flashTechniquesForWCAG}.
 
-Pfeiffer and Parker describe existing implementations for supporting subtitles for HTML5 video \cite{inproceedings:accessibilityForTheHTML5VideoElement}. They describe the work of Jan Gerber who uses JavaScript to load subtitles from a text file and display them on screen in time with an HTML5 video\footnote{Jan Gerber, jquery.srt.js: \url{http://v2v.cc/~j/jquery.srt/}} \cite{inproceedings:accessibilityForTheHTML5VideoElement}. HTML5 specifies a \textless track\textgreater tag that can be used to specify timed text tracks for media elements, see Figure \ref{lst:trackExample} \cite{standard:html5}. Currently implementations vary by browser and cross-browser native support the track element is some way off. %citation?
+Pfeiffer and Parker describe existing implementations for supporting subtitles for HTML5 video \cite{inproceedings:accessibilityForTheHTML5VideoElement}. They describe the work of Jan Gerber who used JavaScript to load subtitles from a text file and display them on screen in time with an HTML5 video\footnote{Jan Gerber, jquery.srt.js: \url{http://v2v.cc/~j/jquery.srt/}} \cite{inproceedings:accessibilityForTheHTML5VideoElement}. HTML5 specifies a \textless track\textgreater tag that can be used to specify timed text tracks for media elements, see Figure \ref{lst:trackExample} \cite{standard:html5}. Currently implementations vary by browser and cross-browser native support the track element is some way off. %citation?
 
 % could mention using webvtt format?
 
@@ -675,7 +675,7 @@ Pfeiffer and Parker describe existing implementations for supporting subtitles f
 Media included on a web page must be done so considering accessibility. If a link is provided to a video it must meet certain criteria described in WCAG 2.0 Guideline 4.1.2. If it is embedded, there any no relevant WCAG 2.0 guidelines.
 
 \subsection{Accessible User Interaction}
-WCAG 2.0 Guideline 2.2.2 states that for any moving content, there must exist some mechanism to pause the content. Mostly all video embedding solutions provide this. Guideline 2.1.1 states that all content must be operable through the keyboard \cite{standard:wcag2}. One of the key problems with plug-in based approaches such as Flash or Silverlight is that any video playback controls are generally inaccessible to screen readers who read web pages based on HTML tags \cite{inproceedings:transformingFlashToXML} \cite{incollection:accessibilityEvaluationForMultimediaContent}. Plug-in content is delivered in a binary format and determining the structure of the content at runtime is near impossible \cite{inproceedings:transformingFlashToXML}.
+WCAG 2.0 Guideline 2.2.2 states that for any moving content, there must exist some mechanism to pause the content. Mostly all video embedding solutions provide this. Guideline 2.1.1 states that all content must be operable through the keyboard \cite{standard:wcag2}. One of the key problems with plug-in based approaches such as Flash or Silverlight is that any video playback controls are generally inaccessible to screen readers who read web pages based on HTML tags \cite{inproceedings:transformingFlashToXML}\cite{incollection:accessibilityEvaluationForMultimediaContent}. Plug-in content is delivered in a binary format and determining the structure of the content at runtime is near impossible \cite{inproceedings:transformingFlashToXML}.
 
 Adobe has provided a document, ``Best Practices for Accessible Flash Design'' which describes how Flash content can be understood by screen readers through Microsoft Active Accessibility\footnote{Microsoft Active Accessibility: \url{http://msdn.microsoft.com/en-us/library/windows/desktop/dd373592(v=vs.85).aspx
 }} (MSAA) \cite{whitePaper:bestPracticesForAccessibleFlashDesign}. If an author of Flash content adds the required accessibility information into the content, Flash can expose their content to screen readers \cite{inproceedings:automaticAccesibilityTranscodingForFlashContent}.
@@ -686,7 +686,7 @@ However there are some limitations with this system. Flash exposes information f
 % could talk about the survey in 'accessibility evaluation for multiemedia content'. but this was a while ago, so may not be relevant anymore?
 
 In HTML5, default video controls can be included using the `controls' attribute on the \textless video\textgreater tag. However since these controls are not all contrable via the keyboard %citation
-they do not meet accessibility guidelines. Moreno et al. developed an accessible HTML5 video player by adding HTML buttons to control the video player that can be controlled by a screen reader\cite{incollection:html5SupportForAnAccessibleWeb}.
+they do not meet accessibility guidelines. Moreno et al. developed an accessible HTML5 video player by adding HTML buttons to control the video player that can be controlled by a screen reader \cite{incollection:html5SupportForAnAccessibleWeb}.
 
 In conclusion, accessible environments are most easily achieved through the use of HTML pages created according to Web content accessibility guidelines \cite{incollection:accessibilityEvaluationForMultimediaContent}.
 
