@@ -622,12 +622,11 @@ HTML5 does not specify a Digital Rights Management (DRM) system \cite{article:HT
 DRM systems are supported by HLS and DASH. DASH allows the resource to specify which DRM systems it supports in the MPD, allowing the content to be encrypted once and streamed to clients that support different DRM systems \cite{article:MPEGDASH}. HLS allows for individual encryption of segments using AES-128 encryption \cite{techreport:aReviewOfHTTPLiveStreaming}.
 
 \section{Performance}
-Globally, mobile data traffic will increase 13-fold between 2012 and 2017 \cite{website:ciscoForecastAndMethodology}. This will lead to an increasing amount of internet video being consumed on mobile devices. Such devices are less powerful than typical desktop computer and  have an emphasis on optimising their battery life. It is therefore important that watching HTML5 video uses the device's resources effectively and efficiently. % could probably say this better.
+Globally, it is predicted that mobile data traffic will increase 13-fold between 2012 and 2017 \cite{website:ciscoForecastAndMethodology}. This will lead to an increasing amount of internet video being consumed on mobile devices. Such devices are less powerful than typical desktop computer and  have an emphasis on optimising their battery life. It is therefore important that watching HTML5 video uses the device's resources effectively and efficiently. % could probably say this better.
 
 Ilias et al. conducted a study to analyse the video streaming performance between Flash video and HTML5 video \cite{inproceedings:aStudyOfVideoPerformanceAnalysis}. They looked at two video performance metrics, frame rate and CPU usage, whilst streaming a video over wired and wireless networks across a variety of browsers. Their study showed that the implementation of HTML5 video in each browser had a big effect on the performance. This can be seen in Figure \ref{fig:cpuPerformanceGraph}. Overall the average CPU for Flash was 77\% and 87\% for HTML5 video. This shows that on average, HTML5 video requires 13\% more CPU power than Flash. In addition, in IE9 HTML5 video used 95\% of the CPU. This certainly has the potential to cause playback problems on mobile devices and cause frustration to users. However, the HTML5 video result for Chrome suggests that the CPU usage is heavily influenced by the HTML5 video implementation. Thus over time, the situation should improve.
 
-% could look at native decoder chips, hardware vs software decoding
-% maybe there also some additional studies on latency etc. 
+% would be good if we can find an article comparing streaming method latencies
 
 \begin{figure}[!t]
 \centering
@@ -639,7 +638,6 @@ Ilias et al. conducted a study to analyse the video streaming performance betwee
 \section{Accessibility}
 Accessibility on the web is governed by the W3C 2008 recommendation, Web Content Accessibility Guidelines (WCAG)\footnote{Web Content Accessibility Guidelines (WCAG) 2.0: \url{http://www.w3.org/TR/WCAG20/}}. More recently, the User Agent Accessibility Guidelines (UAAG), a standard to provide additional advice on the application user interface is in development \cite{website:implementingUAAG}.
 
-% did they actually propose it?
 Moreno et al. propose three areas that must be considered to deliver accessible multimedia content: accessible video, accessible web page and accessible user interaction \cite{article:disablityStandardsForMultimediaOnTheWeb}.
 
 \subsection{Accessible Video}
@@ -665,8 +663,9 @@ The W3C provides documents detailing how these guidelines can be met for differe
 
 Pfeiffer and Parker describe existing implementations for supporting subtitles for HTML5 video \cite{inproceedings:accessibilityForTheHTML5VideoElement}. They describe the work of Jan Gerber who used JavaScript to load subtitles from a text file and display them on screen in time with an HTML5 video\footnote{Jan Gerber, jquery.srt.js: \url{http://v2v.cc/~j/jquery.srt/}} \cite{inproceedings:accessibilityForTheHTML5VideoElement}.
 
-HTML5 specifies a \textless track\textgreater~tag that can be used to specify timed text tracks for media elements \cite{standard:html5}. Figure \ref{lst:trackExample} shows the minimal mark-up required to include subtitles with a video. The subtitle track referenced in Figure \ref{lst:trackExample} are formatted using Web Video Text Track (WebVTT)\footnote{WebVTT: \url{http://dev.w3.org/html5/webvtt/}}, a new standard being developed by the W3C. Dutton said that the track element was available in Internet Explorer and Google Chrome \cite{we
-bsite:html5RocksTrackElement}. A test was carried out to confirm this and found that whilst Google Chrome does support WebVTT subtitles, Internet Explorer 11 and Firefox do not. On mobile devices, Wald et al. found in June 2013 that none of the mobile browsers natively supported WebVTT \cite{article:synote}. However, by using the MediaElement.js player\footnote{MediaElement.js: \url{http://mediaelementjs.com/}}, WebVTT subtitles could be supported on the iPad \cite{article:synote}. Concolato and Le Feuvre describe how WebVTT subtitles can be delivered for live media streaming when HLS is used \cite{inproceedings:liveHTTPSubtitle}.
+HTML5 specifies a \textless track\textgreater~tag that can be used to specify timed text tracks for media elements \cite{standard:html5}. Figure \ref{lst:trackExample} shows the minimal mark-up required to include subtitles with a video. The subtitle track referenced in Figure \ref{lst:trackExample} are formatted using Web Video Text Track (WebVTT)\footnote{WebVTT: \url{http://dev.w3.org/html5/webvtt/}}, a new standard being developed by the W3C. Dutton said that the track element was available in Internet Explorer and Google Chrome \cite{website:html5RocksTrackElement}. A test was carried out to confirm this and found that whilst Google Chrome does support WebVTT subtitles, Internet Explorer 11 and Firefox do not. On mobile devices, Wald et al. found in June 2013 that none of the mobile browsers natively supported WebVTT \cite{article:synote}. However, by using the MediaElement.js player\footnote{MediaElement.js: \url{http://mediaelementjs.com/}}, WebVTT subtitles could be supported on the iPad \cite{article:synote}. WebVTT files can be included as part of an HLS stream, or delivered as part of a live DASH stream as demonstrated by Concolato and Le Feuvre \cite{misc:HTTPLiveStreaming}\cite{inproceedings:liveHTTPSubtitle}.
+
+Instead of using an external text track file, data can be embedded within container formats such as Ogg \cite{inproceedings:accessibilityForTheHTML5VideoElement}\cite{website:oggSubtitles}. However, this is not the direction recommended by the W3C. %citation?
 
 In conclusion, HTML5 video can be accessible although cross-browser native support for video subtitles is some way off.
 
@@ -683,10 +682,6 @@ In conclusion, HTML5 video can be accessible although cross-browser native suppo
 </video>
 \end{lstlisting}
 \end{figure}
-
-% could also talk about embedding in file....
-%Instead of accessibility data can be stored within container formats such as Ogg %\cite{inproceedings:accessibilityForTheHTML5VideoElement}. 
-% http://git.xiph.org/?p=ffmpeg2theora.git;a=blob_plain;f=subtitles.txt;hb=HEAD
 
 \subsection{Accessible Web Page}
 Media included on a web page must be done so considering accessibility. If a link is provided to a video it must meet certain criteria described in WCAG 2.0 Guideline 4.1.2. If it is embedded, there any no relevant WCAG 2.0 guidelines.
