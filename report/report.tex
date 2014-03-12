@@ -546,7 +546,7 @@ There are two distinct approaches for delivering video content to clients. The f
 
 The second are pulled-based approaches usually over the HTTP protocol. Delivering over HTTP allows Content Delivery Networks (CDNs) to be used which can improve caching, efficiency and reduce licensing costs \cite{article:towardsVideoOnTheWebWithHTML5}\cite{inproceedings:HTTPAsTheNarrowWaist}. In addition, HTTP traffic can traverse firewalls and Network Address Translation (NAT) more simply than other transport protocols. %citation? could use several, not sure of the best one
 
-Progressive download is the simplest HTTP approach. The client begins downloading the video and begins to play when it has reached a minimum threshold \cite{article:watchingVideoOverTheWeb}. However there are two problems with this approach. Firstly the client is unable to jump to a point in the video that has not downloaded and secondly there is no guarantee that the delivery rate will remain constant, which could lead to unwanted latency \cite{article:towardsVideoOnTheWebWithHTML5}. %is latency the right word? %To address these concerns more intelligent streaming technologies have been developed. % could mention http range requests, see 'to chunk or not to chunk', but not that important
+Progressive download is the simplest HTTP approach. The client begins downloading the video and begins to play when it has reached a minimum threshold \cite{article:watchingVideoOverTheWeb}. However there are two problems with this approach. Firstly the client is unable to jump to a point in the video that has not downloaded and secondly there is no guarantee that the delivery rate will remain constant, which could lead to unwanted latency \cite{article:towardsVideoOnTheWebWithHTML5}. %is latency the right word? % could mention http range requests, see 'to chunk or not to chunk', but not that important
 
 To enable skipping to any point in the video, the stream can be divided into chunks to be independently requested by the client \cite{article:areWeInTheMiddleOfAVideoStreamingRevolution}. Apple's HTTP Live Streaming (HLS)\footnote{HTTP Live Streaming: \url{http://tools.ietf.org/html/draft-pantos-http-live-streaming-12}} and Microsoft's Smooth Streaming\footnote{Microsoft Smooth Streaming: \url{http://www.iis.net/downloads/microsoft/smooth-streaming}} are example protocols that use this technique \cite{article:watchingVideoOverTheWeb}. Smooth streaming contains all the fragments in a single MP4 file as shown in Figure \ref{fig:mp4Structure} \cite{article:watchingVideoOverTheWeb}. HLS uses a different approach and stores each media fragment in a separate file \cite{article:watchingVideoOverTheWeb}.
 
@@ -557,27 +557,31 @@ To enable skipping to any point in the video, the stream can be divided into chu
 \label{fig:mp4Structure}
 \end{figure} 
 
-These protocols also provide adaptive streaming. Between segment requests, the client can access the current network conditions and switch between different bit rates of the same media based on the optimal bit rate achievable \cite{article:areWeInTheMiddleOfAVideoStreamingRevolution}. % this is quite a direct quote
+These protocols also provide adaptive streaming. Between segment requests, the client can assess the current network conditions and switch between different bit rates of the same media based on the optimal bit rate achievable \cite{article:areWeInTheMiddleOfAVideoStreamingRevolution}.
 
 In order to function, these techniques rely on the delivery of a manifest file to the client to determine which URIs should be requested. % citation?
 Support therefore requires a specific plug-in, Silverlight in the case of Smooth Streaming, or support for the technology built into the HTML5 video implementation \cite{inproceedings:aSeamlessIntegrationOfAdaptiveHTTPStreaming}. % could cite 'a seamless integration of ...' which says that HLS is only supported on apple products, although this is now not quite true
 
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{dash-procedure}
+\caption{DASH media retrieval procedure \cite{inproceedings:dynamicAdapativeHTTPStreamingLive}}
+\label{fig:dashProcedure}
+\end{figure} 
+
 Dynamic Adaptive Streaming over HTTP (DASH)\footnote{Dynamic
-adaptive streaming over HTTP (DASH) ISO/IEC 23009-1} is an international standard developed by the Moving Picture Expert Group (MPEG) in order to provide an open alternative %is it open?
-to proprietary protocols such as HLS and Smooth Streaming. To play video content over DASH, a client first obtains a manifest file in the form of an Media Presentation Description (MPD) \cite{article:MPEGDASH}. Using this data the client selects the appropriate encoded file and segment and requests over HTTP \cite{article:MPEGDASH}.
+adaptive streaming over HTTP (DASH) ISO/IEC 23009-1} is an international standard developed by the Moving Picture Expert Group (MPEG) in order to provide an alternative to proprietary protocols such as HLS and Smooth Streaming. To play video content over DASH, a client first obtains a manifest file in the form of an Media Presentation Description (MPD) \cite{article:MPEGDASH}. Using this data the client selects the appropriate encoded file and segment and requests over HTTP \cite{article:MPEGDASH}. The segment requested should be of a low quality to allow for streaming to begin quickly \cite{inproceedings:dynamicAdapativeHTTPStreamingLive}. Between segment requests the requested quality level can change. Figure \ref{fig:dashProcedure} shows the operation of a DASH session.
 
 Rainer et al. describe a way to use DASH in combination with the HTML5 video element by utilising Media Source Extensions (MSE)\footnote{Media Source Extensions (MSE): \url{http://www.w3.org/TR/media-source/}} which allow JavaScript to construct media streams for the HTML5 audio and video elements \cite{standard:mse} \cite{inproceedings:aSeamlessIntegrationOfAdaptiveHTTPStreaming}. However, currently MSE is only supported on Chrome and Firefox, so it is not a complete solution as of yet \cite{website:mdnMediaSource}.
 
 HTML5 video does not declare what streaming protocols implementations should support. Typically, HTTP streaming is supported using a variety of techniques as supposed to traditional streaming protocols such as RTP, which are not envisioned as the main streaming methods for HTML5 \cite{article:towardsVideoOnTheWebWithHTML5}.
 
 \subsection{Delivery Classes}
-There are two classes of media that can be delivered to clients: on-demand media and live media \cite{techreport:aReviewOfHTTPLiveStreaming}. On-demand media has been previously recorded and encoded, whilst live media is captured, compressed and transmitted on the fly thus requiring significant computing resources \cite{techreport:aReviewOfHTTPLiveStreaming}. % this is almost a direct quote, quotation marks?
-Any technology used to embed video in web pages should support the delivery of both these media types.
+There are two classes of media that can be delivered to clients: on-demand media and live media \cite{techreport:aReviewOfHTTPLiveStreaming}. On-demand media has been previously recorded and encoded, whilst live media is captured, compressed and transmitted on the fly thus requiring significant computing resources \cite{techreport:aReviewOfHTTPLiveStreaming}. Any technology used to embed video in web pages should support the delivery of both these media types.
 
 Plug-in based approaches such as Flash are capable of streaming live video to user agents through Adobe's Flash Media Server (FMS) using RTMP \cite{techreport:aReviewOfHTTPLiveStreaming}. However, these technologies have difficulties traversing firewalls and NAT and require dedicated network infrastructure \cite{inproceedings:dynamicAdapativeHTTPStreamingLive}. % may not be the best citation
 
-A very simple video streaming solution for HTML5 is to set up an HTTP stream from VLC media player\footnote{VLC media player: \url{http://www.videolan.org/vlc/}}. The web browser makes an HTTP request for the stream and once buffered it can begin playing. However this is viable real world solution as the bitrate is constant and... % there must be other reasons why
-More sophisticated live streaming solutions can be provided by HLS or DASH, levering the existing CDNs to distribute content \cite{techreport:aReviewOfHTTPLiveStreaming} \cite{inproceedings:dynamicAdapativeHTTPStreamingLive}. 
+A very simple video streaming solution for HTML5 is to set up an HTTP stream from VLC media player\footnote{VLC media player: \url{http://www.videolan.org/vlc/}}. The web browser makes a single HTTP request for the stream and once buffered it can begin playing. However this is approach requires a continuous connection between client and server and does not account for changes in the connection speed. More sophisticated live streaming solutions can be provided by HLS or DASH, levering existing CDNs to distribute content \cite{techreport:aReviewOfHTTPLiveStreaming} \cite{inproceedings:dynamicAdapativeHTTPStreamingLive}. 
 
 \begin{figure}[!t]
 \centering
@@ -594,8 +598,6 @@ More sophisticated live streaming solutions can be provided by HLS or DASH, leve
 \end{figure}
 
 Fecheyr-Lippens noted that Akamai, the world's leading CDN, has a specific solution for delivering video to iOS devices using HLS \cite{whitePaper:akamaiHDNetwork}\cite{techreport:aReviewOfHTTPLiveStreaming}. He also described McDonald's work of setting up HLS through Amazon services \cite{website:iPhoneHLSAmazon}. McDonald's architecture for delivering live video content to Apple user agents is shown in Figure \ref{fig:hlsAmazonArch}. He calculated the cost and concluded that ``So for 100 streams of 5 minutes worth of video you would be looking at something around 20 cents'' \cite{website:iPhoneHLSAmazon}. A generalised architecture for live streaming over HTTP is shown in Figure \ref{fig:HTTPLiveStreamingArch}.
-
-% could add more detail here about DASH live streaming?
 
 \subsection{Content Protection}
 All video content that is delivered to user agents is vulnerable to the analogue hole. At some point in the delivery chain there must be an analogue component, be it a loud speaker or video display, in order for a user to digest the content. At this point the analogue signals can be recorded, digitised and redistributed, their by bypassing any content protection measures that have been put in place \cite{inproceedings:closingTheAnalogueHole}. %citation really applies to whole paragraph...
