@@ -707,37 +707,39 @@ they do not meet accessibility guidelines. Moreno et al. developed an accessible
 In conclusion, accessible environments are most easily achieved through the use of HTML pages created according to Web content accessibility guidelines \cite{incollection:accessibilityEvaluationForMultimediaContent}.
 
 \section{Discussion}
-In this paper three different areas of research to examine the viability of HTML5 video as a replacement for plug-in based approaches of delivering video have been examined. In addition, new opportunities provided by HTML5 video have been researched.
+In this paper, three different areas of research examining the viability of HTML5 video as a replacement for plug-in based approaches of delivering video have been examined. In addition, new opportunities provided by HTML5 video have been researched.
 
 \subsection{Content Delivery}
-Firstly, the method of embedding video media into a web page was discussed. Plug-in based approaches use the \textless object\textgreater~tag, whilst HTML5 video uses the new \textless video\textgreater~tag. The user agent either uses a plug-in, for the object tag, or a native HTML5 video implementation to handle the content. Using HTML5 video prevents the browser from relying on third party plug-ins and enables a viewing experience that is customised to that device. The \textless video\textgreater~tag also allows for richer integration and interaction with the browser through APIs providing new opportunities.
+Firstly, the method of embedding video media into a web page was discussed. Plug-in based approaches use the \textless object\textgreater~tag, whilst HTML5 video uses the \textless video\textgreater~tag. Using HTML5 video prevents the browser from relying on third party plug-ins and enables a viewing experience that is customised to that device. The \textless video\textgreater~tag also allows for richer integration and interaction with the browser through APIs, providing new opportunities for developers.
 
-Secondly, the paper examined the video formats supported by HTML5 video and plug-in based approaches. Plug-in based approaches typically support several formats across a variety of user agents, with different builds of the plug-in released for each platform. The formats supported by HTML5 video differ between implementations, with no one format being supported by all major implementations, as shown in Table \ref{tab:supportedCodecsAndContainers}. This requires content providers to provide the video file in multiple formats to ensure universal support using the fall-back mechanism provided by HTML5 video. This mechanism also allows a plug-in based approach to be used if the user agent does not support HTML5 video.
+Secondly, this paper examined the video formats supported by HTML5 video and plug-in based approaches. Plug-in based approaches typically support a consistent set of formats across a variety of different platforms. The formats supported by HTML5 video differ between implementations, with no single format gaining universal support. This requires content providers to provide duplicates of the video in multiple formats to ensure cross-browser support.
 
-Thirdly, the methods of content delivery were considered. Both methods support adaptive streaming techniques of live and pre-recorded media, with HTML5 video favouring pull-base HTTP approaches and plug-in based approaches typically using push-based approaches using RTMP and the like. As with the supported video formats, streaming technologies are built into plug-ins, whilst requiring user agent support for HTLM5 video. Using the MSE API, streaming mechanisms can be written in JavaScript, meaning that user agents do not need to concern themselves with which streaming methods for HTML5 video they will support. However, MSE is currently not supported by all browsers.
+Thirdly, the methods of content delivery were considered. Both HTML5 video and plug-in based approaches support adaptive streaming techniques of live and pre-recorded media, with HTML5 video favouring pull-base HTTP approaches and plug-in based approaches typically using push-based methods using RTMP and the like. Streaming technologies are built into plug-ins, whilst requiring user agent support for HTLM5 video. Using the MSE API, streaming mechanisms can be written in JavaScript, meaning that user agents do not need to concern themselves with supporting streaming methods. However, MSE is not currently supported by all browsers.
 
-Lastly, content protection was investigated. Plug-in based approaches have been used for years by content providers to deliver video content to user agents and many techniques exist to both make capturing the streamed video more complex and encrypting the stream. HTML5 video does not specify any DRM methods, although it was decided recently that an API to support these would be developed by the HTML5 W3C working group.
+Lastly, content protection was investigated. Plug-in based approaches have been used for years by content providers to deliver video content to user agents and many techniques exist to make capturing the streamed video very difficult and deliver an encrypted stream. HTML5 video does not specify any DRM methods, although it was agreed recently that an API to support these would be developed by the HTML5 W3C working group.
 
 \subsection{Performance}
-The performance of HTML5 video and plug-in based approaches was researched. It was found that although currently plug-in based approaches currently perform better, an impressive result for HTML5 video in Google Chrome, suggests that as HTML5 video implementations continue to improve, so will their performance. 
+The performance of HTML5 video and plug-in based approaches was researched. It was found that although plug-in based approaches currently perform better, an impressive result for HTML5 video in Google Chrome, suggests that as HTML5 video implementations improve, so will their performance. 
 
 \subsection{Accessibility}
-Both HTML5 video and plug-in based approaches can be made accessible, both in terms of the content they deliver and the interaction with the user agent. However, ensuring plug-in based approaches are accessible requires significant effort by developers meaning accessibility is often not achieved. HTML5 video uses HTML5 elements for interaction, improving its accessible user interaction. % should mention subtitles, once we've finished researching it 
+Both HTML5 video and plug-in based approaches can be made accessible, both in terms of the content they deliver and the interaction with the user agent. However, ensuring plug-in based approaches are accessible requires significant effort by developers, meaning accessibility is often not achieved. HTML5 video uses solely HTML elements, improving its accessible user interaction. % should mention subtitles, once we've finished researching it 
 
 \section{Conclusion}
 This paper has demonstrated that HTML5 video is a viable replacement for plug-in based approaches for delivering video content to user agents.
 
-HTML5 video aims to create a more open web by not relying on third party plug-ins. It enables richer video applications to be developed and provides a customisable experience across platforms. Currently there is no agreement on the formats that should be supported by HTML5 implementations, hindering the uptake of HTML5 video. Continued efforts need to be made to standardise this to give clarification to vendors and  provide a consistent experience across user agents.
+HTML5 video aims to create a more open web by not relying on third party plug-ins. It enables richer video applications to be developed and provides a customisable experience across platforms.
+
+Currently there is no agreement on the formats that should be supported by HTML5 implementations, hindering the uptake of HTML5 video. Continued efforts need to be made to standardise this to give clarification to vendors and  provide a consistent experience across user agents.
 
 Through a variety of adaptive streaming methods, it is possible to deliver both live and pre-recorded content to users using HTML5 video in such a way that provides a good user experience. More work needs to be done to support MSE across browsers to ensure content can be delivered.
 
-Content protection is addressed in HTML5 video through the EME API, however this is still in its infancy. Currently Flash provides a more proven method of delivering protected content to users, so more work is required here to make HTML5 video viable for this purpose.
+Content protection is addressed in HTML5 video through EME, however this is still in its infancy. Currently Flash provides a more proven method of delivering protected content to users, so more work is required here to make HTML5 video viable for this purpose.
 
-The performance of HTML5 video varies across user agents, however it is not a bit concern and should be addressed in future.
+The performance of HTML5 video varies across user agents, however this should be addressed in future.
 
-Finally, HTML5 video improves the accessibility of video content on the web through its improved support for screen readers and closed captions.
+Finally, HTML5 video increases the accessibility of video content on the web through its improved support for screen readers and closed captions.
 
-In conclusion, HTML5 video is a viable replacement for plug-in based approaches albeit with some work to do. The support for HTML5 video by YouTube\footnote{YouTube HTML5: \url{https://www.youtube.com/html5}} demonstrates this and will hopefully drive acceptance and increase the market penetration of HTML5 video.
+In conclusion, HTML5 video is a viable replacement for plug-in based approaches, albeit with some work still to do. The support for HTML5 video by YouTube\footnote{YouTube HTML5: \url{https://www.youtube.com/html5}} demonstrates this and will hopefully drive acceptance and increase the market penetration of HTML5 video.
 
 % An example of a floating figure using the graphicx package.
 % Note that \label must occur AFTER (or within) \caption.
