@@ -497,8 +497,16 @@ HTML5 specifies the \textless object\textgreater~tag which allows for external r
 
 The \textless video\textgreater~tag, new to HTML5, directly integrates the video into the browser, alleviating these problems. By indicating to the user agent that video content is embedded, they are able to decide how to display the content. For example, on iOS devices a place holder is presented and upon tapping launches a full screen player \cite{website:safariHTML5}.
 
-% improve this paragraph....
-In addition, the native embedding of video content opens up new user experiences such as the work of Oehme et al. who added dynamic overlays to a video containing related data from various internet sources \cite{inproceedings:theChroomaApproach}. Other applications are possible with HTML5 through the \textless canvas\textgreater~tag that gives developers a resolution-dependent bitmap canvas to which visual images can be rendered \cite{standard:html5}. Fulton, S. and Fulton, J. describe how a canvas video puzzle application can be created by using created using this interaction \cite{book:html5canvas}. Quax et al. used a hidden video element to receive a video stream from the server. They then manipulated the video before displaying it on a canvas element \cite{inproceedings:aPracticalAndScableMethodForStreaming}.
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.5in]{chrooma-approach}
+\caption{Dynamic video overlays in HTML5 \cite{inproceedings:theChroomaApproach}}
+\label{fig:chroomaApproach}
+\end{figure} 
+
+In addition, the embedding of video content using the \textless video\textgreater~tag opens up opportunities for developers. For example, Oehme et al. added dynamic overlays to a video, with related data from various internet sources, see Figure \ref{fig:chroomaApproach} \cite{inproceedings:theChroomaApproach}.
+
+The HTML5 \textless canvas\textgreater~tag gives developers a resolution-dependent bitmap canvas to which visual images can be rendered \cite{standard:html5}. The \textless canvas\textgreater~tag can be used in conjunction with the \textless video\textgreater~tag to produce engaging applications, such as the work of Fulton, S. and Fulton, J. who describe a canvas video puzzle application, or Quax et al. who used a hidden video element to receive a video stream before manipulating the video and then displaying on a canvas element \cite{book:html5canvas}\cite{inproceedings:aPracticalAndScableMethodForStreaming}.
 
 \subsection{Supported Formats}
 An important distinction to make is the difference between a video container and a codec. A codec is the format in which the audio or video is encoded. Some example video codecs include H.264, Theora, VP6 and VP8. A container describes the structure of the file and what codecs are in use \cite{website:videoFormatsGuide}. Some example containers include MP4, WebM, Ogg, AVI and FLV.
@@ -542,7 +550,6 @@ Table \ref{tab:supportedCodecsAndContainers} illustrates how there is inconsiste
 \end{lstlisting}
 \end{figure}
 
-% need to better signpost what plugin based approaches use and what html5 video uses
 \subsection{Delivery Methods}
 There are two distinct approaches for delivering video content to clients. The first is traditional streaming through protocols such as Real Time Streaming Protocol (RTSP)\footnote{RFC 2326: \url{http://www.ietf.org/rfc/rfc2326.txt}} with Real-time Transport Protocol (RTP)\footnote{RFC 3550: \url{http://www.ietf.org/rfc/rfc3550.txt}} or Adobe's Real Time Message Protocol (RTMP)\footnote{Real-Time Messaging Protocol (RTMP) specification: \url{http://www.adobe.com/devnet/rtmp.html}} \cite{article:areWeInTheMiddleOfAVideoStreamingRevolution}. These are push-based streaming protocols where the server streams packets to the client until the client interrupts or stops the session \cite{article:watchingVideoOverTheWeb}. The streamed packets are not cached on the client \cite{article:watchingVideoOverTheWeb}. A media server is required to manage the streams, an approach traditionally used by Flash \cite{article:flashPlayer}.
 
@@ -576,7 +583,7 @@ adaptive streaming over HTTP (DASH) ISO/IEC 23009-1} is an international standar
 
 Rainer et al. describe a way to use DASH in combination with the HTML5 video element by utilising Media Source Extensions (MSE)\footnote{Media Source Extensions (MSE): \url{http://www.w3.org/TR/media-source/}} which allow JavaScript to construct media streams for the HTML5 audio and video elements \cite{standard:mse} \cite{inproceedings:aSeamlessIntegrationOfAdaptiveHTTPStreaming}. However, currently MSE is only supported on Chrome and Firefox, so it is not a complete solution yet \cite{website:mdnMediaSource}.
 
-HTML5 video does not declare what streaming protocols implementations should support. Typically, HTTP streaming is supported using a variety of techniques, as supposed to traditional streaming protocols such as RTP, which are not envisioned as the main streaming methods for HTML5 \cite{article:towardsVideoOnTheWebWithHTML5}.
+Plug-in based approaches use both push and pulled based streaming methods. Flash uses push based RTMP, whilst Silverlight uses pull based Smooth Streaming. HTML5 video does not declare what streaming protocols implementations should support. Typically, HTTP streaming is supported using a variety of techniques, as supposed to traditional streaming protocols such as RTP, which are not envisioned as the main streaming methods for HTML5 \cite{article:towardsVideoOnTheWebWithHTML5}.
 
 \subsection{Delivery Classes}
 There are two classes of media that can be delivered to clients: on-demand media and live media \cite{techreport:aReviewOfHTTPLiveStreaming}. On-demand media has been previously recorded and encoded, whilst live media is captured, compressed and transmitted on the fly thus requiring significant computing resources \cite{techreport:aReviewOfHTTPLiveStreaming}. Any technology used to embed video in web pages should support the delivery of both these media types.
@@ -624,12 +631,11 @@ HTML5 does not specify a Digital Rights Management (DRM) system \cite{article:HT
 DRM systems are supported by HLS and DASH. DASH allows the resource to specify which DRM systems it supports in the MPD, enabling the content to be encrypted once and streamed to clients that support different DRM systems \cite{article:MPEGDASH}. HLS allows for individual encryption of segments using AES-128 encryption \cite{techreport:aReviewOfHTTPLiveStreaming}.
 
 \section{Performance}
-% i could conduct some of my own testing?
 Globally, it is predicted that mobile data traffic will increase 13-fold between 2012 and 2017 \cite{website:ciscoForecastAndMethodology}. This will lead to an increasing amount of internet video being consumed on mobile devices. Such devices are less powerful than a typical desktop computer and  have a strong emphasis on optimising their battery life. It is therefore important that watching HTML5 video uses the device's resources effectively and efficiently. % could probably say this better.
 
 Ilias et al. conducted a study to analyse the video streaming performance between Flash video and HTML5 video \cite{inproceedings:aStudyOfVideoPerformanceAnalysis}. They looked at two video performance metrics, frame rate and CPU usage, whilst streaming a video over wired and wireless networks across a variety of browsers. Their study showed that the implementation of HTML5 video in each browser had a big effect on the performance. This can be seen in Figure \ref{fig:cpuPerformanceGraph}. Overall the average CPU for Flash was 77\% and 87\% for HTML5 video. This shows that on average, HTML5 video requires 13\% more CPU power than Flash. In addition, in IE9 HTML5 video used 95\% of the CPU. This certainly has the potential to cause playback problems on mobile devices and cause frustration to users. However, the HTML5 video result for Chrome suggests that the CPU usage is heavily influenced by the HTML5 video implementation. Thus as the implementations are developed over time, the situation should improve.
 
-% would be good if we can find an article comparing streaming method latencies
+A test was conducted to compare the performance of playing a Flash and HTML5 video from YouTube in Google Chrome. YouTube provides the option to use either the Flash or HTML5 player. Out of the three major browsers, only Google Chrome supports both YouTube's Flash and HTML5 players. Over several tests, Flash averaged 58\% CPU usage, whilst HTML5 averaged 53\% CPU utilisation. From these results, it is reasonable to say that HTML5 video is a viable replacement for Flash to deliver YouTube content to the browser. 
 
 \begin{figure}[!t]
 \centering
