@@ -391,6 +391,7 @@
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
 
+\usepackage{flushend}
 
 \begin{document}
 \lstset{language=HTML}  
@@ -650,7 +651,6 @@ Accessibility on the web is governed by the W3C 2008 recommendation, Web Content
 Moreno et al. propose three areas that must be considered to deliver accessible multimedia content: accessible video, accessible web page and accessible user interaction \cite{article:disablityStandardsForMultimediaOnTheWeb}.
 
 \subsection{Accessible Video}
-% maybe investigate the flash method a bit more, can flash subtitles be read by screen readers?
 WCAG 2.0 Guideline 1.2 requires that developers provide alternatives for time-based media such as alternative text, captions, audio description and sign language as shown in Table \ref{tab:wcag2Guidelines} \cite{standard:wcag2}.
 
 \begin{table}
@@ -676,6 +676,8 @@ Pfeiffer and Parker describe existing implementations for supporting subtitles f
 HTML5 specifies a \textless track\textgreater~tag that can be used to specify timed text tracks for media elements \cite{standard:html5}. Figure \ref{lst:trackExample} shows the minimal mark-up required to include subtitles with a video. The subtitle track referenced in Figure \ref{lst:trackExample} is formatted using Web Video Text Track (WebVTT)\footnote{WebVTT: \url{http://dev.w3.org/html5/webvtt/}}, a new standard being developed by the W3C. Dutton said that the track element was available in Internet Explorer and Google Chrome \cite{website:html5RocksTrackElement}. A test was carried out to confirm this and found that whilst Google Chrome does support WebVTT subtitles, Internet Explorer 11 and Firefox do not. On mobile devices, Wald et al. found in June 2013 that none of the mobile browsers natively supported WebVTT \cite{article:synote}. However, by using the MediaElement.js player\footnote{MediaElement.js: \url{http://mediaelementjs.com/}}, WebVTT subtitles could be supported on the iPad \cite{article:synote}. WebVTT files can be included as part of an HLS stream, or delivered as part of a live DASH stream as demonstrated by Concolato and Le Feuvre \cite{misc:HTTPLiveStreaming}\cite{inproceedings:liveHTTPSubtitle}.
 
 Instead of using an external text track file, data can be embedded within container formats such as Ogg \cite{inproceedings:accessibilityForTheHTML5VideoElement}\cite{website:oggSubtitles}. However, this is not the approach recommended by the W3C. %citation?
+
+Testing was carried out using the widely used JAWS\footnote{JAWS: \url{http://www.freedomscientific.com/products/fs/jaws-product-page.asp}} screen reader. A YouTube video with captions\footnote{YouTube Captions and Subtitles video: \url{https://www.youtube.com/watch?v=QRS8MkLhQmM}} was played using both the YouTube HTML5 and Flash players. JAWS was easily able to detect the controls and subtitles when the HTML5 player was used, but could not when the Flash player was used. A test was also carried out to see if JAWS could automatically detect subtitles when using the \textless track\textgreater~tag in Google Chrome, it could not.
 
 In conclusion, HTML5 video can be accessible, although cross-browser native support for video subtitles is some way off.
 
@@ -728,7 +730,9 @@ Lastly, content protection was investigated. Plug-in based approaches have been 
 The performance of HTML5 video and plug-in based approaches was researched. It was found that although plug-in based approaches currently perform better, an impressive result for HTML5 video in Google Chrome, suggests that as HTML5 video implementations improve, so will their performance. 
 
 \subsection{Accessibility}
-Both HTML5 video and plug-in based approaches can be made accessible, both in terms of the content they deliver and the interaction with the user agent. However, ensuring plug-in based approaches are accessible requires significant effort by developers, meaning accessibility is often not achieved. HTML5 video uses solely HTML elements, improving its accessible user interaction. % should mention subtitles, once we've finished researching it 
+Both HTML5 video and plug-in based approaches can be made accessible, both in terms of the content they deliver and the interaction with the user agent. However, ensuring plug-in based approaches are accessible requires significant effort by developers, meaning accessibility is often not achieved. HTML5 video uses solely HTML elements, improving its accessible user interaction.
+
+There are multiple methods of embedding subtitles in HTML5 media, improving upon the methods used by plug-in based approaches. However, there is work to be done to provide support for accessibility tools and across web browsers.
 
 \section{Conclusion}
 This paper has demonstrated that HTML5 video is a viable replacement for plug-in based approaches for delivering video content to user agents.
@@ -892,9 +896,9 @@ The author would like to thank Dr. Kirk Martinez for his support and guidance.
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
-
 \bibliographystyle{IEEEtran}
 \bibliography{report}
+
 
 %\begin{thebibliography}{1}
 
