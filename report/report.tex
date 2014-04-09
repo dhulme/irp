@@ -484,11 +484,11 @@ However, for any new web technology to gain acceptance it must be comparable to 
 \section{Introduction}
 \IEEEPARstart{I}{nternet} video traffic is growing. Cisco predict that by 2017, consumer Internet video traffic will account for 69\% of all consumer internet traffic \cite{website:ciscoForecastAndMethodology}. In addition, nearly half of all internet traffic will originate from a non-PC device \cite{website:ciscoForecastAndMethodology}. It is therefore important to ensure that technologies are in place to deliver this content to users and provide a high quality viewing experience across a wide range of devices and platforms.
 
-A typical way users access video multimedia is through embedded video on a web page. Historically this has been achieved through the use of third party plug-ins such as Adobe Flash\footnote{Adobe Flash Player: \url{http://www.adobe.com/uk/software/flash/about/}}, henceforth referred to in this paper as Flash, or Microsoft Silverlight\footnote{Microsoft Silverlight: \url{http://www.microsoft.com/silverlight/}}, henceforth referred to as Silverlight. Flash was well on the way to becoming the de facto standard for embedding video into web pages \cite{article:HTML5LeadsAWebRevolution}. However in 2010 Apple announced that they would not allow Flash on their mobile devices, citing the closed nature of Flash, reliability, security and performance as concerns \cite{website:appleFlash}. Watanabe et al. also raised concerns regarding the security of Flash \cite{inproceedings:flashSecurity}. An industry agreed standard addressing these concerns is required.
+Multimedia is accessed via a user agent: software acting on behalf of a user. A typical scenario could consist of a browser as the user agent, with video embedded on a web page. Historically this has been achieved through the use of third party plug-ins such as Adobe Flash\footnote{Adobe Flash Player: \url{http://www.adobe.com/uk/software/flash/about/}}, henceforth referred to in this paper as Flash, or Microsoft Silverlight\footnote{Microsoft Silverlight: \url{http://www.microsoft.com/silverlight/}}, henceforth referred to as Silverlight. Flash was well on the way to becoming the de facto standard for embedding video into web pages \cite{article:HTML5LeadsAWebRevolution}. However in 2010 Apple announced that they would not allow Flash on their mobile devices, citing the closed nature of Flash, reliability, security and performance as concerns \cite{website:appleFlash}. Watanabe et al. also raised concerns regarding the security of Flash \cite{inproceedings:flashSecurity}. An industry agreed standard addressing these concerns is required.
 
 HTML5, an emerging specification from the W3C, includes a definition for a video element. This element enables videos to be embedded directly into a web page \cite{standard:html5}. Natively embedding videos into web pages removes the web browser's dependence on a third party plug-in, increasing openness. In addition it allows the web browser to handle the video content in any manner it wishes, leading to an enhanced experience across different devices. Finally, it opens new possibilities for the integration of video multimedia with other web content.
 
-However, any replacement for embedding video content must be suitable and comparable to the current technology in use. This paper will research key areas relating to the delivery of video content to user agents and the subsequent user interaction with the video, to examine whether HTML5 video is a viable replacement for the current plug-in based technologies in use.
+However, any replacement for embedding video content must be suitable and comparable to the current technology in use. Each user agent that supports HTML5 video may implement the specification slightly differently, which may lead to inconsistent support for all features. This paper will research key areas relating to the delivery of video content to user agents and the subsequent user interaction with the video, to examine whether HTML5 video is a viable replacement for the current plug-in based technologies in use.
 
 \section{Content Delivery}
 In this section different aspects of delivering video content to user agents will be investigated.
@@ -510,7 +510,7 @@ In addition, the embedding of video content using the \textless video\textgreate
 The HTML5 \textless canvas\textgreater~tag gives developers a resolution-dependent bitmap canvas to which visual images can be rendered \cite{standard:html5}. The \textless canvas\textgreater~tag can be used in conjunction with the \textless video\textgreater~tag to produce engaging applications, such as the work of Fulton, S. and Fulton, J. who describe a canvas video puzzle application, or Quax et al. who used a hidden video element to receive a video stream before manipulating the video and then displaying on a canvas element \cite{book:html5canvas}\cite{inproceedings:aPracticalAndScableMethodForStreaming}.
 
 \subsection{Supported Formats}
-An important distinction to make is the difference between a video container and a codec. A codec is the format in which the audio or video is encoded. Some example video codecs include H.264, Theora, VP6 and VP8. A container describes the structure of the file and what codecs are in use \cite{website:videoFormatsGuide}. Some example containers include MP4, WebM, Ogg, AVI and FLV.
+An important distinction to make is the difference between video containers, codecs and formats. A codec is the way in which the audio or video is encoded, for example H.264, Theora, VP6, VP8 and Spark. A container describes the structure of the file and what codecs are in use \cite{website:videoFormatsGuide}. Some example containers include MP4, WebM, Ogg, AVI and FLV. A format is the combination of a container and codecs, for example an MP4 container with the H.264 video codec and MP3 audio codec.
 
 Flash only plays videos contained within the FLV (Flash Video) container or the ShockWave Flash format used in earlier releases \cite{article:flashPlayer}. Flash supports the VP6 and Spark codecs and since version 9 supports H.264 \cite{article:flashPlayer}\cite{website:flashSupportedFormats}. Silverlight supports the ASF, MP4 and 3GP containers and supports a variety of codecs including H.264 and WMV \cite{website:silverlightSupportedFormats}.
 
@@ -539,13 +539,16 @@ Table \ref{tab:supportedCodecsAndContainers} illustrates how there is inconsiste
 \begin{figure}
 \caption{HTML5 Video Example}
 \label{lst:HTML5VideoExample}
-\begin{lstlisting}[frame=single,language=HTML5]
+\begin{lstlisting}[frame=single,language=HTML5,basicstyle=\footnotesize]
 <video>
- <source src="vid.mp4" type="video/mp4">
- <source src="vid.ogg" type="video/ogg">
- <source src="vid.webm" type="video/webm">
+ <source src="video.mp4"
+   type='video/mp4; codecs="avc1.4D401E, mp4a.40.2"'>
+ <source src="video.ogg"
+   type='video/ogg; codecs="theora, vorbis"'>
+ <source src="video.webm"
+   type='video/webm; codecs="vp8.0, vorbis"'>
  <object>
-  <param name="movie" value="vid.flv">
+  <param name="movie" value="video.flv">
  </object>
 </video>
 \end{lstlisting}
@@ -558,12 +561,12 @@ The second is pulled-based approaches, usually over the HTTP protocol. Deliverin
 
 Progressive download is the simplest HTTP streaming approach. The client begins downloading the video and starts to play when it has reached a minimum threshold \cite{article:watchingVideoOverTheWeb}. However there are two problems with this approach. Firstly, the client is unable to jump to a point in the video that has not downloaded and secondly there is no guarantee that the delivery rate will remain constant, which could lead to unwanted latency \cite{article:towardsVideoOnTheWebWithHTML5}. %is latency the right word? % could mention http range requests, see 'to chunk or not to chunk', but not that important
 
-To enable skipping to any point in the video, the stream can be divided into chunks, or fragments, to be independently requested by the client \cite{article:areWeInTheMiddleOfAVideoStreamingRevolution}. Apple's HTTP Live Streaming (HLS)\footnote{HTTP Live Streaming: \url{http://tools.ietf.org/html/draft-pantos-http-live-streaming-12}} and Microsoft's Smooth Streaming\footnote{Microsoft Smooth Streaming: \url{http://www.iis.net/downloads/microsoft/smooth-streaming}} are example protocols that use this technique \cite{article:watchingVideoOverTheWeb}. Smooth Streaming contains all the fragments in a single MP4 file as shown in Figure \ref{fig:mp4Structure} \cite{article:watchingVideoOverTheWeb}. HLS uses a different approach and stores each media fragment in a separate file \cite{article:watchingVideoOverTheWeb}.
+To enable skipping to any point in the video, the stream can be divided into chunks, or fragments, to be independently requested by the client \cite{article:areWeInTheMiddleOfAVideoStreamingRevolution}. Apple's HTTP Live Streaming (HLS)\footnote{HTTP Live Streaming: \url{http://tools.ietf.org/html/draft-pantos-http-live-streaming-12}} and Microsoft's Smooth Streaming\footnote{Microsoft Smooth Streaming: \url{http://www.iis.net/downloads/microsoft/smooth-streaming}} are example protocols that use this technique \cite{article:watchingVideoOverTheWeb}. Smooth Streaming contains all the fragments in a single MP4 file as shown in Figure \ref{fig:mp4Structure} \cite{article:watchingVideoOverTheWeb}. The MFRA index box shown in Figure \ref{fig:mp4Structure} allows easy and accurate seeking within the file \cite{website:smoothStreamingArchitecture}. HLS uses a different approach and stores each media fragment in a separate file \cite{article:watchingVideoOverTheWeb}.
 
 \begin{figure}[!t]
 \centering
 \includegraphics[width=3.5in]{smooth-streaming}
-\caption{Fragmented MP4 file format structure \cite{article:watchingVideoOverTheWeb}}
+\caption{Fragmented MP4 file format structure, adapted from \cite{website:smoothStreamingArchitecture}}
 \label{fig:mp4Structure}
 \end{figure} 
 
@@ -574,8 +577,8 @@ Support therefore requires a specific plug-in, Silverlight in the case of Smooth
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=2.5in]{dash-procedure}
-\caption{DASH media retrieval procedure \cite{inproceedings:dynamicAdapativeHTTPStreamingLive}}
+\includegraphics[width=2.5in]{dash-procedure2}
+\caption{DASH media retrieval procedure, adapted from  \cite{inproceedings:dynamicAdapativeHTTPStreamingLive}}
 \label{fig:dashProcedure}
 \end{figure} 
 
@@ -591,7 +594,7 @@ There are two classes of media that can be delivered to clients: on-demand media
 
 Plug-in based approaches such as Flash are capable of streaming live video to user agents through Adobe's Flash Media Server (FMS) using RTMP \cite{techreport:aReviewOfHTTPLiveStreaming}. However, these technologies have difficulties traversing firewalls and NAT and require dedicated network infrastructure \cite{inproceedings:dynamicAdapativeHTTPStreamingLive}. % may not be the best citation
 
-A very simple video streaming solution for HTML5 is to set up an HTTP stream from VLC media player\footnote{VLC media player: \url{http://www.videolan.org/vlc/}}. The web browser makes a single HTTP request for the stream and once buffered it can begin playing. However, this approach requires a continuous connection between client and server and does not account for changes in the connection speed. More sophisticated live streaming solutions can be provided by HLS or DASH, leveraging existing CDNs to distribute content \cite{techreport:aReviewOfHTTPLiveStreaming} \cite{inproceedings:dynamicAdapativeHTTPStreamingLive}. 
+An example of a very simple video streaming solution for HTML5 is to set up an HTTP stream from VLC media player\footnote{VLC media player: \url{http://www.videolan.org/vlc/}}. The web browser makes a single HTTP request for the stream and once buffered it can begin playing. However, this approach requires a continuous connection between client and server and does not account for changes in the connection speed. More sophisticated live streaming solutions can be provided by HLS or DASH, leveraging existing CDNs to distribute content \cite{techreport:aReviewOfHTTPLiveStreaming} \cite{inproceedings:dynamicAdapativeHTTPStreamingLive}. 
 
 \begin{figure}[!t]
 \centering
@@ -603,22 +606,22 @@ A very simple video streaming solution for HTML5 is to set up an HTTP stream fro
 \begin{figure}[!t]
 \centering
 \includegraphics[width=3.5in]{streaming-architecture}
-\caption{Live streaming over HTTP architecture \cite{techreport:aReviewOfHTTPLiveStreaming}}
+\caption{Live streaming over HTTP architecture, adapted from  \cite{techreport:aReviewOfHTTPLiveStreaming}}
 \label{fig:HTTPLiveStreamingArch}
 \end{figure}
 
-Fecheyr-Lippens noted that Akamai, the world's leading CDN, has a specific solution for delivering video to iOS devices using HLS \cite{whitePaper:akamaiHDNetwork}\cite{techreport:aReviewOfHTTPLiveStreaming}. He also described McDonald's work of setting up HLS through Amazon services \cite{website:iPhoneHLSAmazon}. McDonald's architecture for delivering live video content to Apple user agents is shown in Figure \ref{fig:hlsAmazonArch}. He calculated the cost and concluded that ``for 100 streams of 5 minutes worth of video you would be looking at something around 20 cents'' \cite{website:iPhoneHLSAmazon}. A generalised architecture for live streaming over HTTP is shown in Figure \ref{fig:HTTPLiveStreamingArch}.
+Fecheyr-Lippens noted that Akamai, the world's leading CDN, has a specific solution for delivering video to iOS devices using HLS \cite{whitePaper:akamaiHDNetwork}\cite{techreport:aReviewOfHTTPLiveStreaming}. He also described McDonald's work of setting up HLS through Amazon services \cite{website:iPhoneHLSAmazon}. McDonald's architecture for delivering live video content to Apple user agents is shown in Figure \ref{fig:hlsAmazonArch}. He calculated the cost and concluded that for 100 streams of 5 minutes worth of video, it would cost about 20 cents for the use of Amazon services \cite{website:iPhoneHLSAmazon}. A generalised architecture for live streaming over HTTP is shown in Figure \ref{fig:HTTPLiveStreamingArch}.
 
 \subsection{Content Protection}
-All video content that is delivered to user agents is vulnerable to the analogue hole. At some point in the delivery chain there must be an analogue component, be it a loud speaker or video display, in order for a user to digest the content \cite{inproceedings:closingTheAnalogueHole}. At this point the analogue signals can be recorded, digitised and redistributed, thus bypassing any content protection measures that have been put in place \cite{inproceedings:closingTheAnalogueHole}.
+All video content that is delivered to user agents is vulnerable to the `analogue hole'. At some point in the delivery chain there must be an analogue component, be it a loud speaker or video display, in order for a user to digest the content \cite{inproceedings:closingTheAnalogueHole}. At this point the analogue signals can be recorded, digitised and redistributed, thus bypassing any content protection measures that have been put in place \cite{inproceedings:closingTheAnalogueHole}.
 
 However, since this capturing process may require specialist equipment and can take a large amount of time, the average user will want to access the file in its original digital form. Therefore content protection systems should focus on encrypting the digital file and occluding its location.
 
 All videos delivered over HTTP progressive download will have the video file accessible at some URI. In HTML5 the location of the original video file can be found by examining the `src' attribute, see Figure \ref{lst:HTML5VideoExample}. For plug-in based approaches such as Flash, tools can be used to discover the URI.
 
-This approach can be prevented by including a one-time token in the URI. For example, the URI could be \texttt{http://example.com/video?id=1\&token=12345}. Valid tokens can be stored in a database on the server and removed once they have been requested. In this way the server can attempt to prevent the client from saving the media.
+This approach can be made more difficult for the client by including a one-time token in the URI. For example, the URI could be \texttt{http://example.com/video?id=1\&token=12345}. Valid tokens can be stored in a database on the server and removed once they have been requested. When a web page containing a video loads, the video will be automatically requested. If a user attempts to request the video again, in order to save it, the server can throw an error.
 
-The second approach for capturing streamed media is through examining the browser cache. All video content delivered via HTTP streaming methods is cached by the browser. The cached video data can be then extracted using tools such as VideoCacheView\footnote{VideoCacheView by Nir Sofer: \url{http://www.nirsoft.net/utils/video_cache_view.html}}. A test to capture a video from YouTube was successful.
+The second approach for capturing streamed media is through examining the browser cache. All video content delivered via HTTP streaming methods is cached by the browser. The cached video data can be then extracted using tools such as VideoCacheView\footnote{VideoCacheView by Nir Sofer: \url{http://www.nirsoft.net/utils/video_cache_view.html}}. Using this tool, a test to capture a video from YouTube was successful.
 
 Whilst content delivered over traditional streaming protocols such as RTMP is not cached, it is possible to capture the stream from the browser and save to a file using tools such as RTMPDumpHelper\footnote{RTMPDumpHelper by Nir Sofer: \url{http://www.nirsoft.net/utils/rtmp_dump_helper.html}}. Content providers can make this technique more difficult by preventing unauthorised clients from accessing the video stream using technologies such as Adobe's SWF Verification\footnote{SWF verification for Protected HTTP Dynamic Streaming: \url{http://www.adobe.com/devnet/adobe-media-server/articles/swf-verification-protected-http-dynamic-streaming.html}}. 
 
