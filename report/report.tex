@@ -637,14 +637,14 @@ DRM systems are supported by HLS and DASH. DASH allows the resource to specify w
 \section{Performance}
 Globally, it is predicted that mobile data traffic will increase 13-fold between 2012 and 2017 \cite{website:ciscoForecastAndMethodology}. This will lead to an increasing amount of internet video being consumed on mobile devices. Such devices are less powerful than a typical desktop computer and  have a strong emphasis on optimising their battery life. It is therefore important that watching HTML5 video uses the device's resources effectively and efficiently. % could probably say this better.
 
-Ilias et al. conducted a study to analyse the video streaming performance between Flash video and HTML5 video \cite{inproceedings:aStudyOfVideoPerformanceAnalysis}. They looked at two video performance metrics, frame rate and CPU usage, whilst streaming a video over wired and wireless networks across a variety of browsers. Their study showed that the implementation of HTML5 video in each browser had a big effect on the performance. This can be seen in Figure \ref{fig:cpuPerformanceGraph}. Overall the average CPU for Flash was 77\% and 87\% for HTML5 video. This shows that on average, HTML5 video requires 13\% more CPU power than Flash. In addition, in IE9 HTML5 video used 95\% of the CPU. This certainly has the potential to cause playback problems on mobile devices and cause frustration to users. However, the HTML5 video result for Chrome suggests that the CPU usage is heavily influenced by the HTML5 video implementation. Thus as the implementations are developed over time, the situation should improve.
+Ilias et al. conducted a study to analyse the video streaming performance between Flash video and HTML5 video on low-power laptops \cite{inproceedings:aStudyOfVideoPerformanceAnalysis}. They looked at two video performance metrics, frame rate and CPU usage, whilst streaming a video over wired and wireless networks across a variety of browsers. Their study showed that the implementation of HTML5 video in each browser had a big effect on the performance. This can be seen in Figure \ref{fig:cpuPerformanceGraph}. Overall the average CPU for Flash was 77\% and 87\% for HTML5 video. This shows that on average, HTML5 video requires 13\% more CPU power than Flash. In addition, in IE9 HTML5 video used 95\% of the CPU. This certainly has the potential to cause playback problems on mobile devices and cause frustration to users. However, the HTML5 video result for Chrome suggests that the CPU usage is heavily influenced by the HTML5 video implementation. Thus as the implementations are developed over time, the situation should improve.
 
 A test was conducted to compare the performance of playing a Flash and HTML5 video from YouTube in Google Chrome. YouTube provides the option to use either the Flash or HTML5 player. Out of the three major browsers, only Google Chrome supports both YouTube's Flash and HTML5 players. Over several tests, Flash averaged 58\% CPU usage, whilst HTML5 averaged 53\% CPU utilisation. From these results, it is reasonable to say that HTML5 video is a viable replacement for Flash to deliver YouTube content to the browser. 
 
 \begin{figure}[!t]
 \centering
 \includegraphics[width=3.5in]{cpu-performance-graph}
-\caption{CPU usage across different browsers. Data produced by averaging results from Ilias et al. \cite{inproceedings:aStudyOfVideoPerformanceAnalysis} across two different CPU monitoring tools and both wired and wireless networks.}
+\caption{CPU usage across different browsers on low-power laptops. Data produced by averaging results from Ilias et al. \cite{inproceedings:aStudyOfVideoPerformanceAnalysis} across two different CPU monitoring tools and both wired and wireless networks.}
 \label{fig:cpuPerformanceGraph}
 \end{figure} 
 
@@ -718,14 +718,14 @@ they do not meet accessibility guidelines. Moreno et al. developed an accessible
 In conclusion, accessible environments are most easily achieved through the use of HTML pages created according to Web content accessibility guidelines \cite{incollection:accessibilityEvaluationForMultimediaContent}.
 
 \section{Discussion}
-In this paper, three different areas of research examining the viability of HTML5 video as a replacement for plug-in based approaches of delivering video have been examined. In addition, new opportunities provided by HTML5 video have been researched.
+In this paper, the viability of HTML5 video as a replacement for plug-in based approaches of delivering video has been examined, focussing on the areas of content delivery, performance and accessibility.
 
 \subsection{Content Delivery}
 Firstly, the method of embedding video media into a web page was discussed. Plug-in based approaches use the \textless object\textgreater~tag, whilst HTML5 video uses the \textless video\textgreater~tag. Using HTML5 video prevents the browser from relying on third party plug-ins and enables a viewing experience that is customised to that device. The \textless video\textgreater~tag also allows for richer integration and interaction with the browser through APIs, providing new opportunities for developers.
 
 Secondly, this paper examined the video formats supported by HTML5 video and plug-in based approaches. Plug-in based approaches typically support a consistent set of formats across a variety of different platforms. The formats supported by HTML5 video differ between implementations, with no single format gaining universal support. This requires content providers to provide duplicates of the video in multiple formats to ensure cross-browser support.
 
-Thirdly, the methods of content delivery were considered. Both HTML5 video and plug-in based approaches support adaptive streaming techniques of live and pre-recorded media, with HTML5 video favouring pull-base HTTP approaches and plug-in based approaches typically using push-based methods using RTMP and the like. Streaming technologies are built into plug-ins, whilst HTLM5 video requires user agent support. Using the MSE API, streaming mechanisms can be written in JavaScript, meaning that user agents do not need to concern themselves with supporting streaming methods. However, MSE is not currently supported by all browsers.
+Thirdly, the methods of content delivery were considered. Both HTML5 video and plug-in based approaches support adaptive streaming techniques of live and pre-recorded media, with HTML5 video favouring pull-base HTTP approaches and plug-in based approaches typically using push-based methods using RTMP and the like. Streaming technologies are built into plug-ins, whilst HTLM5 video requires user agent support. These streaming technologies can be implemented by the user agent itself, or in JavaScript through the MSE API. Using MSE means that user agents do not need to concern themselves with supporting streaming methods. However, MSE is not currently supported by all browsers.
 
 Lastly, content protection was investigated. Plug-in based approaches have been used for years by content providers to deliver video content to user agents and many techniques exist to make capturing the streamed video very difficult and deliver an encrypted stream. HTML5 video does not specify any DRM methods, although it was agreed recently that an API to support these would be developed by the HTML5 W3C working group.
 
@@ -738,21 +738,19 @@ Both HTML5 video and plug-in based approaches can be made accessible, both in te
 There are multiple methods of embedding subtitles in HTML5 media, improving upon the methods used by plug-in based approaches. However, there is work to be done to provide support for accessibility tools and across web browsers.
 
 \section{Conclusion}
-This paper has demonstrated that HTML5 video is a viable replacement for plug-in based approaches for delivering video content to user agents.
-
 HTML5 video aims to create a more open web by not relying on third party plug-ins. It enables richer video applications to be developed and provides a customisable experience across platforms.
 
-Currently there is no agreement on the formats that should be supported by HTML5 implementations, hindering the uptake of HTML5 video. Continued efforts need to be made to standardise this to give clarification to vendors and  provide a consistent experience across user agents.
+Currently there is no agreement on the formats that should be supported by HTML5 implementations, hindering the uptake of HTML5 video. Continued efforts need to be made to standardise this to give clarification to vendors and provide a consistent experience across user agents.
 
 Through a variety of adaptive streaming methods, it is possible to deliver both live and pre-recorded content to users using HTML5 video in such a way that provides a good user experience. More work needs to be done to support MSE across browsers to ensure content can be delivered.
 
-Content protection is addressed in HTML5 video through EME, however this is still in its infancy. Currently Flash provides a more proven method of delivering protected content to users, so more work is required here to make HTML5 video viable for this purpose.
+Content protection is addressed in HTML5 video through EME, however this is still in its infancy. Currently, Flash provides a more proven method of delivering protected content to users, so more work is required here to make HTML5 video viable for this purpose and convince distributors of protected content that their content can be suitably protected.
 
 The performance of HTML5 video varies across user agents, however this should be addressed in future.
 
 Finally, HTML5 video increases the accessibility of video content on the web through its improved support for screen readers and closed captions.
 
-In conclusion, HTML5 video is a viable replacement for plug-in based approaches, albeit with some work still to do. The support for HTML5 video by YouTube\footnote{YouTube HTML5: \url{https://www.youtube.com/html5}} demonstrates this and will hopefully drive acceptance and increase the market penetration of HTML5 video.
+In conclusion, HTML5 video is a viable replacement for plug-in based approaches, albeit with some work still to do. Technologies such as Flash, are more mature and currently offer a more consistent experience on desktop web browsers. In order for HTML5 to be considered viable, standardisation efforts must be continued. If they are successful, a standardised way of delivering video content to user agents will become a reality and it is hoped that the use of HTML5 video by content providers, such as YouTube\footnote{YouTube HTML5: \url{https://www.youtube.com/html5}} will drive acceptance and lead to increased adoption.
 
 % An example of a floating figure using the graphicx package.
 % Note that \label must occur AFTER (or within) \caption.
