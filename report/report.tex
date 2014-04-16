@@ -512,7 +512,7 @@ The HTML5 \textless canvas\textgreater~tag gives developers a resolution-depende
 \subsection{Supported Formats}
 An important distinction to make is the difference between video containers, codecs and formats. A codec is the way in which the audio or video is encoded, for example H.264, Theora, VP6, VP8 and Spark. A container describes the structure of the file and what codecs are in use \cite{website:videoFormatsGuide}. Some example containers include MP4, WebM, Ogg, AVI and FLV. A format is the combination of a container and codecs, for example an MP4 container with the H.264 video codec and MP3 audio codec.
 
-Flash only plays videos contained within the FLV (Flash Video) container or the ShockWave Flash format used in earlier releases \cite{article:flashPlayer}. Flash supports the VP6 and Spark codecs and since version 9, supports H.264 \cite{article:flashPlayer}\cite{website:flashSupportedFormats}. Silverlight supports the ASF, MP4 and 3GP containers and supports a variety of codecs including H.264 and WMV \cite{website:silverlightSupportedFormats}.
+Flash only plays videos contained within the FLV (Flash Video) container or the ShockWave Flash container used in earlier releases \cite{article:flashPlayer}. Flash supports the VP6 and Spark codecs and since version 9, supports H.264 \cite{article:flashPlayer}\cite{website:flashSupportedFormats}. Silverlight supports the ASF, MP4 and 3GP containers and supports a variety of codecs including H.264 and WMV \cite{website:silverlightSupportedFormats}.
 
 HTML5 does not specify support for any specific codec or container format, leading to different codecs and containers being supported by different user agents \cite{article:towardsVideoOnTheWebWithHTML5}. The three main codecs and containers most widely supported are H.264 in an MP4 container, Theora in an Ogg container and VP8 in a WebM container \cite{article:towardsVideoOnTheWebWithHTML5}.
 
@@ -712,8 +712,7 @@ However there are some limitations with this system. Flash exposes information a
 
 % could talk about the survey in 'accessibility evaluation for multiemedia content'. but this was a while ago, so may not be relevant anymore?
 
-In HTML5, default video controls can be included using the `controls' attribute on the \textless video\textgreater~tag. However since these controls are not all controllable via the keyboard %citation
-they do not meet accessibility guidelines. Moreno et al. developed an accessible HTML5 video player by adding HTML buttons to control the video player that can be controlled by a screen reader \cite{incollection:html5SupportForAnAccessibleWeb}.
+In HTML5, default video controls can be included using the `controls' attribute on the \textless video\textgreater~tag. However, each web browser implement these controls differently and do not necessarily allow them to be controlled via the keyboard. Therefore, the default controls do not meet accessibility guidelines. Moreno et al. developed an accessible HTML5 video player by adding HTML buttons to control the video player that can be controlled by a screen reader \cite{incollection:html5SupportForAnAccessibleWeb}.
 
 In conclusion, accessible environments are most easily achieved through the use of HTML pages created according to Web content accessibility guidelines \cite{incollection:accessibilityEvaluationForMultimediaContent}.
 
