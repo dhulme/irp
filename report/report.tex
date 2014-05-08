@@ -414,8 +414,8 @@
 %        John~Doe,~\IEEEmembership{Fellow,~OSA,}
 %        and~Jane~Doe,~\IEEEmembership{Life~Fellow,~IEEE}% <-this % stops a space
 \author{David~Hulme%
-\thanks{K. Martinez is with the Department
-of Electronics and Computer Science, University of Southampton, UK e-mail: (see http://users.ecs.soton.ac.uk/km).}}% <-this % stops a space
+\thanks{D. Hulme is a student with the Department
+of Electronics and Computer Science, University of Southampton, UK e-mail: dh7g10@soton.ac.uk}}% <-this % stops a space
 %\thanks{J. Doe and J. Doe are with Anonymous University.}% <-this % stops a space
 %\thanks{Manuscript received April 19, 2005; revised January 11, 2007.}}
 
@@ -475,7 +475,7 @@ of Electronics and Computer Science, University of Southampton, UK e-mail: (see 
 %\boldmath
 HTML5 defines a method for videos to be embedded directly into a web page. The ability to directly embed videos into web pages removes the web browser's dependence on third party software and opens up new possibilities for the integration of video multimedia with other web content.
 
-However, for any new web technology to gain acceptance it must be comparable to the current technology in use. In this paper, an examination of the viability of HTML5 video as a replacement for the current plug-in based technologies in use is conducted as well as research into the new opportunities it can provide.
+However, for any new web technology to gain acceptance it must be comparable to the current technology in use. In this paper, an examination of the viability of HTML5 video as a replacement for the current plug-in based technologies in use is conducted, as well as research into the new opportunities it can provide.
 \end{abstract}
 
 \IEEEpeerreviewmaketitle
@@ -506,12 +506,12 @@ The \textless video\textgreater~tag, new to HTML5, directly integrates the video
 
 In addition, the embedding of video content using the \textless video\textgreater~tag opens up opportunities for developers. For example, Oehme et al. added dynamic overlays to a video, with related data from various Internet sources, see Figure \ref{fig:chroomaApproach} \cite{inproceedings:theChroomaApproach}.
 
-The HTML5 \textless canvas\textgreater~tag gives developers a resolution-dependent bitmap canvas to which visual images can be rendered \cite{standard:html5}. The \textless canvas\textgreater~tag can be used in conjunction with the \textless video\textgreater~tag to produce engaging applications, such as the work of Fulton, S. and Fulton, J. who describe a canvas video puzzle application, or Quax et al. who used a hidden video element to receive a video stream before manipulating the video and then displaying on a canvas element \cite{book:html5canvas}\cite{inproceedings:aPracticalAndScableMethodForStreaming}.
+The HTML5 \textless canvas\textgreater~tag gives developers a resolution-dependent bitmap canvas to which visual images can be rendered \cite{standard:html5}. The \textless canvas\textgreater~tag can be used in conjunction with the \textless video\textgreater~tag to produce engaging applications, such as the work of Fulton, S. and Fulton, J. who describe a canvas video puzzle application, or Quax et al. who used a hidden video element to receive a video stream before manipulating the video and displaying on a canvas element \cite{book:html5canvas}\cite{inproceedings:aPracticalAndScableMethodForStreaming}.
 
 \subsection{Supported Formats}
 An important distinction to make is the difference between video containers, codecs and formats. A codec is the way in which the audio or video is encoded, for example H.264, Theora, VP6, VP8 and Spark. A container describes the structure of the file and which codecs are in use \cite{website:videoFormatsGuide}. Some example containers include MP4, WebM, Ogg, AVI and FLV. A format is the combination of a container and codecs, for example an MP4 container with the H.264 video codec and MP3 audio codec.
 
-Flash only plays videos contained within the FLV (Flash Video) container or the ShockWave Flash container used in earlier releases \cite{article:flashPlayer}. Flash supports the VP6 and Spark codecs and since version 9, supports H.264 \cite{article:flashPlayer}\cite{website:flashSupportedFormats}. Silverlight supports the ASF, MP4 and 3GP containers and supports a variety of codecs including H.264 and WMV \cite{website:silverlightSupportedFormats}.
+Flash only plays videos contained within the Flash Video (FLV) container or the ShockWave Flash container used in earlier releases \cite{article:flashPlayer}. Flash supports the VP6 and Spark codecs and since version 9, supports H.264 \cite{article:flashPlayer}\cite{website:flashSupportedFormats}. Silverlight supports the ASF, MP4 and 3GP containers and supports a variety of codecs including H.264 and WMV \cite{website:silverlightSupportedFormats}.
 
 HTML5 does not specify support for any specific codec or container format, leading to different codecs and containers being supported by different user agents \cite{article:towardsVideoOnTheWebWithHTML5}. The three codecs and containers most widely supported are H.264 in an MP4 container, Theora in an Ogg container and VP8 in a WebM container \cite{article:towardsVideoOnTheWebWithHTML5}.
 
@@ -643,7 +643,7 @@ A test was conducted to compare the performance of playing a Flash and HTML5 vid
 \begin{figure}[!t]
 \centering
 \includegraphics[width=3.5in]{cpu-performance-graph}
-\caption{CPU usage across different browsers on low-power laptops. Data produced by averaging results from Ilias et al. \cite{inproceedings:aStudyOfVideoPerformanceAnalysis} across two different CPU monitoring tools and both wired and wireless networks.}
+\caption{CPU usage when playing a video across different browsers on low-power laptops. Data produced by averaging results from Ilias et al. \cite{inproceedings:aStudyOfVideoPerformanceAnalysis} across two different CPU monitoring tools and both wired and wireless networks.}
 \label{fig:cpuPerformanceGraph}
 \end{figure} 
 
@@ -656,7 +656,7 @@ Moreno et al. propose three areas that must be considered to deliver accessible 
 WCAG 2.0 Guideline 1.2 requires that developers provide alternatives for time-based media such as alternative text, captions, audio description and sign language as shown in Table \ref{tab:wcag2Guidelines} \cite{standard:wcag2}.
 
 \begin{table}
-  \caption{WCAG 2.0 Guidelines \cite{standard:wcag2}}
+  \caption{WCAG 2.0 Guidelines. Conformance levels are graded A (lowest), AA, and AAA (highest). \cite{standard:wcag2}}
   \label{tab:wcag2Guidelines}
   	\centering
     \begin{tabular}{|l|l|p{1.5cm}|}
@@ -698,7 +698,7 @@ In conclusion, HTML5 video can be accessible, although cross-browser native supp
 \end{figure}
 
 \subsection{Accessible Web Page}
-Accessibility must be considered when including media on a web page. If a link is provided to a video it must meet certain criteria described in WCAG 2.0 Guideline 4.1.2. If it is embedded, there any no relevant WCAG 2.0 guidelines.
+Accessibility must be considered when including media on a web page. If a link is provided to a video it must meet certain criteria described in WCAG 2.0 Guideline 4.1.2. If it is embedded, there are no relevant WCAG 2.0 guidelines.
 
 \subsection{Accessible User Interaction}
 WCAG 2.0 Guideline 2.2.2 states that for any moving content, there must exist some mechanism to pause the content. Most video embedding solutions provide this. Guideline 2.1.1 states that all content must be operable through the keyboard \cite{standard:wcag2}. One of the key problems with plug-in based approaches such as Flash or Silverlight is that any video playback controls are generally inaccessible to screen readers which read web pages based on HTML tags \cite{inproceedings:transformingFlashToXML}\cite{incollection:accessibilityEvaluationForMultimediaContent}. Plug-in content is delivered in a binary format and determining the structure of the content at runtime is near impossible \cite{inproceedings:transformingFlashToXML}.
