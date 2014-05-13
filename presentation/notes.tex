@@ -1,0 +1,52 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amssymb}
+\usepackage{easylist}
+\usepackage[pdftex]{graphicx}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage[compact]{titlesec}
+
+\title{title}
+\author{David Hulme}
+\begin{document}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[LO,LE]{IRP Presentation Notes}
+\fancyfoot[RO, RE]{\today}
+
+\fancyhead[RO,RE]{David Hulme}
+
+
+\section*{Slide 1 - Title}
+Good afternoon, I'm Dave. This afternoon I will be presenting my research on whether HTML5 video is a viable replacement for plug-in based approaches, such as Adobe Flash, for delivering video content to users.
+
+\section*{Slide 2 - Introduction}
+Internet video traffic is growing. Cisco predict that by 2017, video will account for 69\% of all consumer Internet traffic. It's therefore important to ensure that technologies are in place to deliver video to users and provide a high quality experience across a wide range of devices and platforms.
+
+Historically, video has been embedded in web pages through the use of third party plug-ins. HTML5 includes a definition for a video element that enables videos to be embedded directly into web pages, removing the web browser's dependence on plug-ins and allowing it to handle the video content in any manner it wishes.
+
+However, any new method of embedding video must be suitable and comparable to the current technologies in use.
+
+\section*{Slide 4 - Streaming Video}
+Any video delivery solution must support both on-demand and live media. HTML5 video can achieve this through protocols such as HTTP Live Streaming, as shown here.
+
+\section*{Slide 5 - Content Protection}
+Once this content has been streamed, it must be protected. The first way to do this is to limit access to the streams to authorised clients. The second way is through DRM technologies. HTML5 does not specify a DRM system, however Encrypted Media Extensions will provide a common API to interact with such systems.
+
+\section*{Slide 6 - Performance}
+Globally, it's predicted that mobile data traffic will increase 13-fold between 2012 and 2017. This will lead to an increased amount of video being consumed on less powerful mobile devices where it's important that watching video uses the resources effectively. 
+
+There is conflicting research on whether HTML5 or plug-in based approaches perform better, suggesting that performance is heavily influenced by differences in the way HTML5 is implemented.
+
+\section*{Slide 7 - Accessibility}
+The accessibility of video streaming solutions must be also considered. Video subtitles are supported by both plug-in and HTML5 approaches. A <track> tag can be used to add subtitles to HTML5 video and guidelines exist for how to add subtitles to Flash.
+
+
+\section*{Slide 8 - Conclusion}
+In conclusion. HTML5 video is a viable replacement for plug-in based approaches, albeit with some work still to do. Technologies such as Flash, are more mature and currently offer a more consistent experience. If efforts to standardise HTML5 are successful, an standardised way of delivering video content will become a reality and it's hoped that the use of HTML5 video by content providers will drive acceptance and lead to increased adoption.
+
+
+\end{document}
